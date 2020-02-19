@@ -1,68 +1,76 @@
-import { db } from "./db"; // importando la base de datos
-import { findQuestionByDate } from "./utils/findQuestionByDate"; // importando la funcion que hace la logica de buscar la pregunta
+import { findQuestionByDate } from "./db"; // importando métodos de la base de datos
 
-//1. querys selector
-// 1.1seleccionar la pregunta y mostrar la pregunta en pantalla
+//1. QUERY SELECTORS
+//1.1 seleccionar la pregunta y mostrar la pregunta en pantalla
 const questionElm = document.querySelector('[class="question"]');
-//1.2Estamos seleccionando el input del calendario.
+//1.2 Estamos seleccionando el input del calendario.
 const datepickerElm = document.querySelector('[name= "datepicker"]');
-//1.3seleccionar div vacio donde voy a meter las respuestas anteriores
+//1.3 seleccionar div vacio donde voy a meter las respuestas anteriores
 const emptyDiv = document.querySelector('[class="emptyDiv"]');
+//1.4 seleccionamos el input de respuesta de la pregunta
+const answerInput = document.querySelector('[name = "answer"]');
+//1.5 seleccionamos el form donde se encuentra el input y el boton
+const form = document.querySelector("form");
+//1.6 seleccionamos el boton de submit
+const submitButton = document.querySelector('[class="submit-button"]');
+//1.7 seleccionamos el ano en curso
+const nowYear = document.querySelector('[class="year"]');
 
-//2.LOGICA DEL DIA DE HOY
-
-//2.1 Calcular la fecha de hoy
+//1.8 Calcular la fecha de hoy
 const todayDate = new Date();
-//2.2 funcion que llama la base de datos y la fecha de hoy que es por defoult
-const questionObjToday = findQuestionByDate(db.questions, todayDate);
-//2.3 estoy inyectando la pregunta del dia en el html
-questionElm.innerHTML = questionObjToday.title;
-//2.4.estamos seteando el calendario en la fecha de hoy
-datepickerElm.valueAsDate = todayDate;
+//1.9 Calcular el año actual
+const currentYear = todayDate.getFullYear();
 
-//3 funcion donde creamos el template que vamos a inyectar en el html de las respuestas anteriores.
-function templateHtmlToday() {
-  //3.1variable done guardare el string del template resultado del for
-  let htmltStrToday = "";
-  //3.2 Realizamos el for para escoger mostrar el key y value, se hace un loop sobre un objeto y extraer los valores.
-  for (let [key, value] of Object.entries(questionObjToday.answers)) {
-    //3.3guardamos en la variable que se asigno arriba el valor del for, y para que se guarden todos se hace una concatenacion de los strings
-    htmltStrToday = `${htmltStrToday}<div class="lastestAnswer">
+// LOGICA PARA RENDERIZAR EL TITULO Y LAS RESPUESTAS
+function renderQuestionObj(questionObj) {
+  //2.1 Inyecta la pregunta como título en el HTML
+  questionElm.innerHTML = questionObj.title;
+
+  //2.2 variable done guardare el string del template resultado del for
+  let answersHTML = "";
+
+  //2.3 Realizamos el for para escoger mostrar el key y value, se hace un loop sobre un objeto y extraer los valores.
+  for (let [key, value] of Object.entries(questionObj.answers)) {
+    //2.4 guardamos en la variable que se asigno arriba el valor del for, y para que se guarden todos se hace una concatenacion de los strings
+    answersHTML = `${answersHTML}<div class="lastestAnswer">
     <span>${key}: ${value}</span>
     </div>`;
   }
-  //3.4estoy inyectando el html en el div vacio.
-  emptyDiv.innerHTML = htmltStrToday;
+
+  //2.5 estoy inyectando el html en el div vacio.
+  emptyDiv.innerHTML = answersHTML;
 }
-//llamando la funcion
-templateHtmlToday();
 
-//4.LOGICA DEL DIA ELEGIDO
-
-//4.1 Estamos escuchando cuando se cambia la fecha del calendario
+//3 LOGICA DEL DIA ELEGIDO
+//3.1 Estamos escuchando cuando se cambia la fecha del calendario
 datepickerElm.addEventListener("input", function(e) {
-  //4.2 guardamos en una variable el evento de lo que seleccionamos y lo creamos como formato de fecha
+  //3.2 guardamos en una variable el evento de lo que seleccionamos y lo creamos como formato de fecha
   let newDate = e.target.valueAsDate;
-  //4.3 llamamos la funcion aqui, para tener acceso a la variable newdate
+  //3.3 llamamos la funcion aqui, para tener acceso a la variable newdate
 
-  //5 Es la funcion que llama la base de datos y la fecha elegida
-  const questionObjNewDate = findQuestionByDate(db.questions, newDate);
-  //5.1 estamos inyectando en el html el objecto de la pregunta elegida
-  questionElm.innerHTML = questionObjNewDate.title;
+  //3.4 Es la funcion que llama la base de datos para traer las preguntas de la fecha elegida
+  const questionObjNewDate = findQuestionByDate(newDate);
 
-  //6 funcion donde creamos el template para inyectar el html la parte de la fecha elegida
-  function templateHtmlNewDate() {
-    //6.1 creamos la variable donde se va a guardar el template html dado por el for
-    let htmlStrNewDate = "";
-    // 6.2 hacemos un for para hacer un loop sobre el objecto y poder extraer el key y el value del mismo, y aplicarle el template html
-    for (let [key, value] of Object.entries(questionObjNewDate.answers)) {
-      //6.3 guardamos el string concatenado del template en la variable creada.
-      htmlStrNewDate = `${htmlStrNewDate}<div class="lastestAnswer">
-      <span>${key}: ${value}</span>
-      </div>`;
-    }
-    //y lo inyectamos en el div vacio creado arriba
-    emptyDiv.innerHTML = htmlStrNewDate;
-  }
-  templateHtmlNewDate();
+  //3.5 renderizar la pregunta del día elegido
+  renderQuestionObj(questionObjNewDate);
 });
+
+//4. LOGICA DEL SUBMIT
+//4.1 escuchar el evento del input es decir cuando se le da submit al boton
+form.addEventListener("submit", function handleInput(event) {
+  let infoInput = event.target.answer.value;
+  event.preventDefault();
+  console.log(infoInput);
+});
+
+// 5.LOGICA DEL DIA DE HOY
+
+//5.1 funcion que llama la base de datos y la fecha de hoy que es por defoult
+const questionObjToday = findQuestionByDate(todayDate);
+//5.2.estamos seteando el calendario en la fecha de hoy
+datepickerElm.valueAsDate = todayDate;
+//5.3 poner el ano en automatico asi podre tomar como key el valor
+nowYear.innerHTML = `<h3>${currentYear}</h3>`;
+
+// 5.4 renderizar la pregunta del día de hoy
+renderQuestionObj(questionObjToday);

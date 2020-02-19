@@ -1,4 +1,4 @@
-export const db = {
+const db = {
   owner: "Cinthia",
   questions: [
     {
@@ -32,3 +32,17 @@ export const db = {
     }
   ]
 };
+// funcion que encuentra la pregunta con la fecha que le pasan como parametro
+export function findQuestionByDate(date) {
+  // quien es date? es el todayDate o newDate
+
+  const day = date.getDate(); // guardamos en una variable el numero que obtenemos del dia de la fecha
+  const month = date.getMonth() + 1; // guardamos en la variable mes el mes que obtenemos de la fecha  y le sumamos uno, porque esa mierda comienza con cero
+
+  return db.questions.find(function(question) {
+    // asi que le ponemos al array question que esta dentro del objeto un find para encontrar la pregunta
+    return question.day === day && question.month === month; // cada question es cada objeto de preguntas, la cual sera seleccionada si machea el mes y el dia.
+  });
+}
+
+function saveAnswer(year, answer, title) {}
