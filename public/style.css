@@ -98,3 +98,11 @@ h3 {
   display: flex;
   justify-content: center;
 }
+
+#section-question {
+  display: none;
+}
+
+#welcome-section {
+  display: none;
+}

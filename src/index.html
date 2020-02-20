@@ -13,7 +13,8 @@
   </head>
   <body>
     <!--answer question screen -->
-    <div>
+
+    <section id="section-question">
       <div class="head">
         <h2 class="name-owner">Cinthia's diary</h2>
         <label class="date" for="start"
@@ -43,8 +44,37 @@
         </div>
       </form>
       <div class="emptyDiv"></div>
-      <div class="anotherEmptyDiv"></div>
-    </div>
+    </section>
+
+    <!--Welcome section-->
+    <section id="welcome-section">
+      <h1 class="principal-title">Welcome to your diary</h1>
+      <img class="img" src="/public/images/diaryimg.png" />
+      <h2 class="name-answer">What is your name?</h2>
+
+      <!--input name -->
+      <div>
+        <form class="form-nameSubmit">
+        <label for="name"></label>
+        <div>
+          <input
+            class="name-input"
+            id="name"
+            type="text"
+            placeholder="Enter your Name"
+            name="name"
+            required
+          />
+        </div>
+      </div>
+      <!--button name submit -->
+      <div class="container-button">
+        <button id="submit" class="submit-button" type="submit">
+          Submit
+        </button>
+      </div>
+    </form>
+    </section>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

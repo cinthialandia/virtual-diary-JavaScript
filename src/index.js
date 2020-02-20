@@ -1,4 +1,9 @@
-import { findQuestionByDate, saveAnswer } from "./db"; // importando métodos de la base de datos
+import {
+  findQuestionByDate,
+  saveAnswer,
+  findNamesOwner,
+  savesName
+} from "./db"; // importando métodos de la base de datos
 
 //1. QUERY SELECTORS
 //1.1 seleccionar la pregunta y mostrar la pregunta en pantalla
@@ -21,12 +26,8 @@ const todayDate = new Date();
 const currentYear = todayDate.getFullYear();
 //1.10 Seleccionamos el DOM del nombre
 const OwnersName = document.querySelector('[class="name-owner"]');
-
-// EN CONSTRUCCION
-//1.11 empty otro div
-const anotherEmptyDiv = document.querySelector('[class="anotherEmptyDiv"]');
-
-
+//1.11 Seleccionamos el form de la pantlla welcome
+const formWelcome = document.querySelector('[class="form-nameSubmit"]');
 
 // LOGICA PARA RENDERIZAR EL TITULO Y LAS RESPUESTAS
 function renderQuestionObj(questionObj) {
@@ -91,38 +92,30 @@ nowYear.innerHTML = `<h3>${currentYear}</h3>`;
 // 5.4 renderizar la pregunta del día de hoy
 renderQuestionObj(questionObjToday);
 
-// WELCOME PART
+//6 if que seleccione la pantalla a mostrar
+//6.1 guardamos la funcion para tener el resultado en una variable
+const owner = findNamesOwner();
 
-// vamos a realizar el template para inyectar el html
+//6.2 realizamo el if el cual mostrara una de las 2 pantallas
+// variable owner resultado de la funcion debe ser distinta a undefined
+if (owner != undefined) {
+  //si esta es distinta cambiar el style css con block y mostrar la pantalla
+  document.getElementById("section-question").style.display = "block";
+} else {
+  //si la misma no es diferente a undefined entonces cambiar el estilo css para mostrar la pantalla
+  document.getElementById("welcome-section").style.display = "block";
+}
 
-//welcome screen
-anotherEmptyDiv.insertAdjacentHTML(
-  "afterbegin",
-  `<div>
-<h1 class="principal-title">Welcome to your diary</h1>
-<img class="img" src="/public/images/diaryimg.png" />
-<h2 class="name-answer">What is your name?</h2>
-
-<!--input name -->
-<div>
-  <label for="name"></label>
-  <div>
-    <input class="name-input"
-      id="name"
-      type="text"
-      placeholder="Enter your Name"
-      name="name"
-      required
-    />
-  </div>
-</div>
-<!--button name submit -->
-<div class="container-button">
-  <button id="submit" class="submit-button" type="submit">
-    Submit
-  </button>
-</div>
-</div>`
-);
-
-// welcome end
+// 7 Escuchamos el evento del form y este mostrara cuando el boton sea submiteado
+//Tiene los parametros submit que es el evento que paso y el callback con el evento
+formWelcome.addEventListener("submit", function submitInput(event) {
+  //prevenimos que el boton actualice por default
+  event.preventDefault();
+  //guardamos en una variable el nombre que se introduce en el input
+  //Utilizamos el name, ya que podemos obtener el valor del mismo, si utilizamos la clase name que tiene el input en el HTML
+  const namesOwner = event.target.name.value;
+  savesName(namesOwner);
+  OwnersName.innerHTML = `${namesOwner}'s Diary`;
+  document.getElementById("welcome-section").style.display = "none";
+  document.getElementById("section-question").style.display = "block";
+});

@@ -1,5 +1,5 @@
 const db = {
-  owner: "Cinthia",
+  owner: undefined,
   questions: [
     {
       title: "How was your day?",
@@ -60,4 +60,12 @@ export function saveAnswer(year, answer, date) {
   questionToAnswer.answers[year] = answer;
   return questionToAnswer;
   //console.log(db);
+}
+
+export function findNamesOwner() {
+  return db.owner;
+}
+
+export function savesName(name) {
+  const uhh = (db.owner = name);
 }
