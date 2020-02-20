@@ -29,6 +29,16 @@ const db = {
         2018: "Yes! god its everyting!!!",
         2017: "Ozanaaa ozanaaa oh lorddd!!"
       }
+    },
+    {
+      title: "Who is your best friend?",
+      day: 21,
+      month: 2,
+      answers: {
+        2019: "Maria",
+        2018: "Diego",
+        2017: "No one"
+      }
     }
   ]
 };
@@ -45,4 +55,9 @@ export function findQuestionByDate(date) {
   });
 }
 
-function saveAnswer(year, answer, title) {}
+export function saveAnswer(year, answer, date) {
+  const questionToAnswer = findQuestionByDate(date);
+  questionToAnswer.answers[year] = answer;
+  return questionToAnswer;
+  //console.log(db);
+}

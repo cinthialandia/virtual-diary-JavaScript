@@ -93,3 +93,8 @@ h3 {
   color: #3f4142;
   text-align: center;
 }
+
+.lastestAnswer {
+  display: flex;
+  justify-content: center;
+}

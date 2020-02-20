@@ -1,4 +1,4 @@
-import { findQuestionByDate } from "./db"; // importando métodos de la base de datos
+import { findQuestionByDate, saveAnswer } from "./db"; // importando métodos de la base de datos
 
 //1. QUERY SELECTORS
 //1.1 seleccionar la pregunta y mostrar la pregunta en pantalla
@@ -15,11 +15,18 @@ const form = document.querySelector("form");
 const submitButton = document.querySelector('[class="submit-button"]');
 //1.7 seleccionamos el ano en curso
 const nowYear = document.querySelector('[class="year"]');
-
 //1.8 Calcular la fecha de hoy
 const todayDate = new Date();
 //1.9 Calcular el año actual
 const currentYear = todayDate.getFullYear();
+//1.10 Seleccionamos el DOM del nombre
+const OwnersName = document.querySelector('[class="name-owner"]');
+
+// EN CONSTRUCCION
+//1.11 empty otro div
+const anotherEmptyDiv = document.querySelector('[class="anotherEmptyDiv"]');
+
+
 
 // LOGICA PARA RENDERIZAR EL TITULO Y LAS RESPUESTAS
 function renderQuestionObj(questionObj) {
@@ -58,9 +65,18 @@ datepickerElm.addEventListener("input", function(e) {
 //4. LOGICA DEL SUBMIT
 //4.1 escuchar el evento del input es decir cuando se le da submit al boton
 form.addEventListener("submit", function handleInput(event) {
-  let infoInput = event.target.answer.value;
   event.preventDefault();
-  console.log(infoInput);
+  const answer = event.target.answer.value;
+  //traer la fecha cuando se dio submit la respuesta
+  const currentDate = datepickerElm.valueAsDate;
+  //se llama la function,con los parametros necesario
+  //guardamos la funcion de save answer dentro de la variable questionobup.
+  //para poder tener el valor del objeto de las preguntas con sus respuestas
+  const questionObjectUpdate = saveAnswer(currentYear, answer, currentDate);
+  // le pasamos a la funcion que esta encargada de renderizar las respuestas en el html
+  // y le pasamos questionobup con el objecto y la nueva respuesta adicionada
+  //para que renderice cuando haya un evento y muestre la nueva respuesta con las anteriores.
+  renderQuestionObj(questionObjectUpdate);
 });
 
 // 5.LOGICA DEL DIA DE HOY
@@ -68,9 +84,45 @@ form.addEventListener("submit", function handleInput(event) {
 //5.1 funcion que llama la base de datos y la fecha de hoy que es por defoult
 const questionObjToday = findQuestionByDate(todayDate);
 //5.2.estamos seteando el calendario en la fecha de hoy
-datepickerElm.valueAsDate = todayDate;
+datepickerElm.valueAsNumber = todayDate.getTime();
 //5.3 poner el ano en automatico asi podre tomar como key el valor
 nowYear.innerHTML = `<h3>${currentYear}</h3>`;
 
 // 5.4 renderizar la pregunta del día de hoy
 renderQuestionObj(questionObjToday);
+
+// WELCOME PART
+
+// vamos a realizar el template para inyectar el html
+
+//welcome screen
+anotherEmptyDiv.insertAdjacentHTML(
+  "afterbegin",
+  `<div>
+<h1 class="principal-title">Welcome to your diary</h1>
+<img class="img" src="/public/images/diaryimg.png" />
+<h2 class="name-answer">What is your name?</h2>
+
+<!--input name -->
+<div>
+  <label for="name"></label>
+  <div>
+    <input class="name-input"
+      id="name"
+      type="text"
+      placeholder="Enter your Name"
+      name="name"
+      required
+    />
+  </div>
+</div>
+<!--button name submit -->
+<div class="container-button">
+  <button id="submit" class="submit-button" type="submit">
+    Submit
+  </button>
+</div>
+</div>`
+);
+
+// welcome end
