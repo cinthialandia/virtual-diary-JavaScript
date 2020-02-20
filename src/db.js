@@ -59,7 +59,6 @@ export function saveAnswer(year, answer, date) {
   const questionToAnswer = findQuestionByDate(date);
   questionToAnswer.answers[year] = answer;
   return questionToAnswer;
-  //console.log(db);
 }
 
 export function findNamesOwner() {
@@ -67,5 +66,10 @@ export function findNamesOwner() {
 }
 
 export function savesName(name) {
-  const uhh = (db.owner = name);
+  db.owner = name;
+}
+
+export function saveStartDate(starDate) {
+  db.startingDate = starDate.getTime();
+  console.log(db);
 }

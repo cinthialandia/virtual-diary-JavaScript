@@ -2,7 +2,8 @@ import {
   findQuestionByDate,
   saveAnswer,
   findNamesOwner,
-  savesName
+  savesName,
+  saveStartDate
 } from "./db"; // importando métodos de la base de datos
 
 //1. QUERY SELECTORS
@@ -80,32 +81,6 @@ form.addEventListener("submit", function handleInput(event) {
   renderQuestionObj(questionObjectUpdate);
 });
 
-// 5.LOGICA DEL DIA DE HOY
-
-//5.1 funcion que llama la base de datos y la fecha de hoy que es por defoult
-const questionObjToday = findQuestionByDate(todayDate);
-//5.2.estamos seteando el calendario en la fecha de hoy
-datepickerElm.valueAsNumber = todayDate.getTime();
-//5.3 poner el ano en automatico asi podre tomar como key el valor
-nowYear.innerHTML = `<h3>${currentYear}</h3>`;
-
-// 5.4 renderizar la pregunta del día de hoy
-renderQuestionObj(questionObjToday);
-
-//6 if que seleccione la pantalla a mostrar
-//6.1 guardamos la funcion para tener el resultado en una variable
-const owner = findNamesOwner();
-
-//6.2 realizamo el if el cual mostrara una de las 2 pantallas
-// variable owner resultado de la funcion debe ser distinta a undefined
-if (owner != undefined) {
-  //si esta es distinta cambiar el style css con block y mostrar la pantalla
-  document.getElementById("section-question").style.display = "block";
-} else {
-  //si la misma no es diferente a undefined entonces cambiar el estilo css para mostrar la pantalla
-  document.getElementById("welcome-section").style.display = "block";
-}
-
 // 7 Escuchamos el evento del form y este mostrara cuando el boton sea submiteado
 //Tiene los parametros submit que es el evento que paso y el callback con el evento
 formWelcome.addEventListener("submit", function submitInput(event) {
@@ -115,7 +90,49 @@ formWelcome.addEventListener("submit", function submitInput(event) {
   //Utilizamos el name, ya que podemos obtener el valor del mismo, si utilizamos la clase name que tiene el input en el HTML
   const namesOwner = event.target.name.value;
   savesName(namesOwner);
-  OwnersName.innerHTML = `${namesOwner}'s Diary`;
   document.getElementById("welcome-section").style.display = "none";
-  document.getElementById("section-question").style.display = "block";
+  showTodayQuestion(namesOwner);
 });
+
+// 5.LOGICA DEL DIA DE HOY
+function showTodayQuestion(namesOwner) {
+  //5.1 funcion que llama la base de datos y la fecha de hoy que es por defoult
+  const questionObjToday = findQuestionByDate(todayDate);
+  //5.2.estamos seteando el calendario en la fecha de hoy
+  datepickerElm.valueAsNumber = todayDate.getTime();
+  //5.3 poner el ano en automatico asi podre tomar como key el valor
+  nowYear.innerHTML = `<h3>${currentYear}</h3>`;
+  //se esta inyectando el nombre de la persona
+  OwnersName.innerHTML = `${namesOwner}'s Diary`;
+  // 5.4 renderizar la pregunta del día de hoy
+  renderQuestionObj(questionObjToday);
+  // mostar la seccion pregunta
+  document.getElementById("section-question").style.display = "block";
+  //guardar la fecha de comienzo en la base de datos
+  saveStartDate(todayDate);
+}
+
+// Aca empieza a correr la aplicacion
+//6 if que seleccione la pantalla a mostrar
+//6.1 guardamos la funcion para tener el resultado en una variable
+const owner = findNamesOwner();
+
+//6.2 realizamo el if el cual mostrara una de las 2 pantallas
+// variable owner resultado de la funcion debe ser distinta a undefined
+if (owner) {
+  //si esta es distinta cambiar el style css con block y mostrar la pantalla
+  showTodayQuestion(owner);
+} else {
+  //si la misma no es diferente a undefined entonces cambiar el estilo css para mostrar la pantalla
+  document.getElementById("welcome-section").style.display = "block";
+}
+
+
+//setear el maximo y minimo en el calendario
+//guardar la informacion en el localstorage
+//Avisar cuando se guarde la respuesta
+//ordenar las respuesta de mas actual a menos actual
+//limpiar el input despues de guardar la respuesta
+//hacer un mejor diseno responsive
+//cambiar el bootstrap y css para usar con vpn
+//usar un nuevo daypicker
