@@ -5,6 +5,7 @@ import {
   savesName,
   saveStartDate
 } from "./db"; // importando métodos de la base de datos
+import { format, compareAsc } from "date-fns";
 
 //1. QUERY SELECTORS
 //1.1 seleccionar la pregunta y mostrar la pregunta en pantalla
@@ -13,12 +14,8 @@ const questionElm = document.querySelector('[class="question"]');
 const datepickerElm = document.querySelector('[name= "datepicker"]');
 //1.3 seleccionar div vacio donde voy a meter las respuestas anteriores
 const emptyDiv = document.querySelector('[class="emptyDiv"]');
-//1.4 seleccionamos el input de respuesta de la pregunta
-const answerInput = document.querySelector('[name = "answer"]');
 //1.5 seleccionamos el form donde se encuentra el input y el boton
 const form = document.querySelector("form");
-//1.6 seleccionamos el boton de submit
-const submitButton = document.querySelector('[class="submit-button"]');
 //1.7 seleccionamos el ano en curso
 const nowYear = document.querySelector('[class="year"]');
 //1.8 Calcular la fecha de hoy
@@ -37,15 +34,17 @@ function renderQuestionObj(questionObj) {
 
   //2.2 variable done guardare el string del template resultado del for
   let answersHTML = "";
+  //realizamos esta variable donde guardamos el objeto con las respuestas ya que el obj entries las convierte en un array
+  //y asi poder aplicar reverse y poder manejar del mas actualizado al mas viejo
+  let questionEntries = Object.entries(questionObj.answers).reverse();
 
   //2.3 Realizamos el for para escoger mostrar el key y value, se hace un loop sobre un objeto y extraer los valores.
-  for (let [key, value] of Object.entries(questionObj.answers)) {
+  for (let [key, value] of questionEntries) {
     //2.4 guardamos en la variable que se asigno arriba el valor del for, y para que se guarden todos se hace una concatenacion de los strings
     answersHTML = `${answersHTML}<div class="lastestAnswer">
     <span>${key}: ${value}</span>
     </div>`;
   }
-
   //2.5 estoy inyectando el html en el div vacio.
   emptyDiv.innerHTML = answersHTML;
 }
@@ -79,6 +78,8 @@ form.addEventListener("submit", function handleInput(event) {
   // y le pasamos questionobup con el objecto y la nueva respuesta adicionada
   //para que renderice cuando haya un evento y muestre la nueva respuesta con las anteriores.
   renderQuestionObj(questionObjectUpdate);
+  // utilizamos este metodo para borrar valores del input despues que se hizo submit del mismo
+  form.reset();
 });
 
 // 7 Escuchamos el evento del form y este mostrara cuando el boton sea submiteado
@@ -99,7 +100,13 @@ function showTodayQuestion(namesOwner) {
   //5.1 funcion que llama la base de datos y la fecha de hoy que es por defoult
   const questionObjToday = findQuestionByDate(todayDate);
   //5.2.estamos seteando el calendario en la fecha de hoy
-  datepickerElm.valueAsNumber = todayDate.getTime();
+  datepickerElm.value = format(todayDate, "yyyy-MM-dd");
+  // seteamos la fecha maxima la cual podra escoger el usuario para contestar respuesta
+  //que es la de hoy es decir cuando se empieza el diario
+  datepickerElm.max = format(todayDate, "yyyy-MM-dd");
+  //seteamos la fecha minima que seria unos dias antes de la fecha max y asi poder dar un rango de tiempo para contestar fechas pasadas
+  datepickerElm.min = "2020-02-01";
+
   //5.3 poner el ano en automatico asi podre tomar como key el valor
   nowYear.innerHTML = `<h3>${currentYear}</h3>`;
   //se esta inyectando el nombre de la persona
@@ -127,12 +134,8 @@ if (owner) {
   document.getElementById("welcome-section").style.display = "block";
 }
 
-
-//setear el maximo y minimo en el calendario
 //guardar la informacion en el localstorage
 //Avisar cuando se guarde la respuesta
-//ordenar las respuesta de mas actual a menos actual
-//limpiar el input despues de guardar la respuesta
 //hacer un mejor diseno responsive
 //cambiar el bootstrap y css para usar con vpn
 //usar un nuevo daypicker
