@@ -5,33 +5,37 @@ import {
   savesName,
   saveStartDate
 } from "./db"; // importando métodos de la base de datos
-import { format, compareAsc } from "date-fns";
+import { format } from "date-fns";
 
 //1. QUERY SELECTORS
 //1.1 seleccionar la pregunta y mostrar la pregunta en pantalla
-const questionElm = document.querySelector('[class="question"]');
+const questionElm = document.querySelector(".question");
 //1.2 Estamos seleccionando el input del calendario.
 const datepickerElm = document.querySelector('[name= "datepicker"]');
 //1.3 seleccionar div vacio donde voy a meter las respuestas anteriores
-const emptyDiv = document.querySelector('[class="emptyDiv"]');
+const emptyDiv = document.querySelector(".emptyDiv");
 //1.5 seleccionamos el form donde se encuentra el input y el boton
-const form = document.querySelector("form");
+const questionForm = document.querySelector(".question-form");
 //1.7 seleccionamos el ano en curso
-const nowYear = document.querySelector('[class="year"]');
+const nowYear = document.querySelector(".year");
 //1.8 Calcular la fecha de hoy
 const todayDate = new Date();
 //1.9 Calcular el año actual
 const currentYear = todayDate.getFullYear();
 //1.10 Seleccionamos el DOM del nombre
-const OwnersName = document.querySelector('[class="name-owner"]');
+const OwnersName = document.querySelector(".name-owner");
 //1.11 Seleccionamos el form de la pantlla welcome
-const formWelcome = document.querySelector('[class="form-nameSubmit"]');
+const formWelcome = document.querySelector(".form-nameSubmit");
 
 // LOGICA PARA RENDERIZAR EL TITULO Y LAS RESPUESTAS
 function renderQuestionObj(questionObj) {
   //2.1 Inyecta la pregunta como título en el HTML
   questionElm.innerHTML = questionObj.title;
 
+  // Si la pregunta no tiene respuesta, return nada. y asi no va a tratar renderizar algo que no existe.
+  if (!questionObj.answers) {
+    return;
+  }
   //2.2 variable done guardare el string del template resultado del for
   let answersHTML = "";
   //realizamos esta variable donde guardamos el objeto con las respuestas ya que el obj entries las convierte en un array
@@ -65,7 +69,7 @@ datepickerElm.addEventListener("input", function(e) {
 
 //4. LOGICA DEL SUBMIT
 //4.1 escuchar el evento del input es decir cuando se le da submit al boton
-form.addEventListener("submit", function handleInput(event) {
+questionForm.addEventListener("submit", function handleInput(event) {
   event.preventDefault();
   const answer = event.target.answer.value;
   //traer la fecha cuando se dio submit la respuesta
@@ -79,7 +83,7 @@ form.addEventListener("submit", function handleInput(event) {
   //para que renderice cuando haya un evento y muestre la nueva respuesta con las anteriores.
   renderQuestionObj(questionObjectUpdate);
   // utilizamos este metodo para borrar valores del input despues que se hizo submit del mismo
-  form.reset();
+  questionForm.reset();
 });
 
 // 7 Escuchamos el evento del form y este mostrara cuando el boton sea submiteado
