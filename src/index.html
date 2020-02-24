@@ -5,91 +5,82 @@
     <title>Diary</title>
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link rel="stylesheet" href="/public/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!--answer question screen -->
+    <div class="card z-depth-4">
+      <div class="card-content">
+        <section id="section-question">
+          <div class="head">
+            <p class="name-owner"></p>
+            <label class="date" for="start"
+              >Start date:
+              <input name="datepicker" type="date" />
+            </label>
+          </div>
+          <form class="question-form">
+            <h1 class="question center-align"></h1>
+            <div>
+              <div class="answer">
+                <h2 class="year">2021</h2>
+                <input
+                  id="answer"
+                  type="text"
+                  placeholder="Enter your answer"
+                  name="answer"
+                  required
+                />
+              </div>
+              <!--button save submit -->
+              <div class="container-button">
+                <button id="submit" class="btn btn-primary" type="submit">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="emptyDiv"></div>
+        </section>
 
-    <section id="section-question">
-      <div class="head">
-        <h2 class="name-owner">Cinthia's diary</h2>
-        <label class="date" for="start"
-          >Start date:
-          <input name="datepicker" type="date" />
-        </label>
-      </div>
-      <form class="question-form">
-        <h3 class="question">How do you see yourself in 5 years?</h3>
-        <div>
-          <div class="answer">
-            <h3 class="year">2021</h3>
+        <!--Welcome section-->
+        <section class="row" id="welcome-section">
+          <h1 class="col s6" class="principal-title">
+            Welcome to your <span style="color: #e678a7">new diary</span>
+          </h1>
+          <img class="col s6" class="img" src="/public/images/diaryimg.png" />
+
+          <form class="form-nameSubmit">
+            <!--NEW INPUT -->
+
+            <!--NEW INPUT -->
+
+            <!--input name -->
             <input
-              id="answer"
+              class="col s6"
+              class="name-input"
+              id="name"
               type="text"
-              placeholder="Enter your answer"
-              name="answer"
+              name="name"
               required
             />
-          </div>
-          <!--button save submit -->
-          <div class="container-button">
-            <button id="submit" class="submit-button" type="submit">
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
-      <div class="emptyDiv"></div>
-    </section>
-
-    <!--Welcome section-->
-    <section id="welcome-section">
-      <h1 class="principal-title">Welcome to your diary</h1>
-      <img class="img" src="/public/images/diaryimg.png" />
-      <h2 class="name-answer">What is your name?</h2>
-
-      <!--input name -->
-      <div>
-        <form class="form-nameSubmit">
-        <label for="name"></label>
-        <div>
-          <input
-            class="name-input"
-            id="name"
-            type="text"
-            placeholder="Enter your Name"
-            name="name"
-            required
-          />
-        </div>
+            <!--button name submit -->
+            <div class="col s6" class="container-button">
+              <button id="submit" class="btn btn-primary" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </section>
       </div>
-      <!--button name submit -->
-      <div class="container-button">
-        <button id="submit" class="submit-button" type="submit">
-          Submit
-        </button>
-      </div>
-    </form>
-    </section>
-
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

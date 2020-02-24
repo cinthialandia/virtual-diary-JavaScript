@@ -1,20 +1,24 @@
 body {
-  background-color: #6aaff0;
+  background-color: #8f95e3;
+  padding: 50px;
+  color: #101028;
+  font-family: "Quicksand";
 }
 
+.card {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
 /*img style*/
 .img {
-  width: 150px;
-  border-radius: 50%;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-h1,
-h2,
-h3 {
-  color: #f0f1ec;
-  padding: 10px;
+
+h2 {
+  color: #e678a7;
 }
 
 .title {
@@ -40,16 +44,18 @@ h3 {
   padding: 20px;
 }
 
-.submit-button {
-  background-color: #01579b;
-  border-radius: 4px;
-  color: white;
-  font-size: 1em;
-  height: 40px;
-  width: 96px;
-  margin: 10px;
-  border: 0px solid;
+.btn.btn-primary {
+  background-color: #fca82e;
+  border-color: #e1b064;
+  min-height: 40px;
+  min-width: 96px;
 }
+
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #e1b064;
+  border-color: #e1b064;
+}
+
 .head {
   display: flex;
   align-items: baseline;

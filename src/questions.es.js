@@ -1,36 +1,36 @@
 export default [
   {
-    title: "What are your goals for this year?",
+    title: "¿Cuales son tus metas para este año?",
     day: 1,
     month: 1
   },
   {
-    title: "Do you like your job?",
+    title: "¿Te gusta tu trabajo?",
     day: 2,
     month: 1
   },
   {
-    title: "Who is your best friend?",
+    title: "¿Quien es tu mejor amigo?",
     day: 3,
     month: 1
   },
   {
-    title: "What has been the best experience of your life so far?",
+    title: "¿Cual ha sido tu mejor experiencia en la vida hasta ahora?",
     day: 4,
     month: 1
   },
   {
-    title: "Do you believe in luck?",
+    title: "¿Crees en la suerte?",
     day: 5,
     month: 1
   },
   {
-    title: "What is your favorite food?",
+    title: "¿Cual es tu comida favorita?",
     day: 6,
     month: 1
   },
   {
-    title: "Do you have a couple?",
+    title: "¿Tienes pareja?",
     day: 7,
     month: 1
   },
@@ -40,322 +40,322 @@ export default [
     month: 1
   },
   {
-    title: "Where do you want to travel next?",
+    title: "¿Donde vives?",
     day: 9,
     month: 1
   },
   {
-    title: "What was the last restaurant you visited?",
+    title: "¿Cuál fue el último restaurante que visitaste?",
     day: 10,
     month: 1
   },
   {
-    title: "Are you a leader or a follower?",
+    title: "¿Eres un líder o un seguidor?",
     day: 11,
     month: 1
   },
   {
-    title: "What's the newest thing you're wearing today?",
+    title: "¿Qué es lo mas nuevo que estás utilizando hoy?",
     day: 12,
     month: 1
   },
   {
-    title: "Do you need a break? From what?",
+    title: "¿Necesitas un tiempo libre? ¿De que?",
     day: 13,
     month: 1
   },
   {
-    title: "If you were going to start your own company what would it be?",
+    title: "¿Si fueras a comenzar tu propia compañía, sobre que seria?",
     day: 14,
     month: 1
   },
   {
-    title: "Today you needed more?",
+    title: "¿Hoy necesitas más de?",
     day: 15,
     month: 1
   },
   {
-    title: "How do you describe home?",
+    title: "¿Cómo describirías tu casa?",
     day: 16,
     month: 1
   },
   {
-    title: "What TV series are you watching?",
+    title: "¿Que serie de televisión estás viendo?",
     day: 17,
     month: 1
   },
   {
-    title: "What was your last concert?",
+    title: "¿Cuál fue tu último concierto?",
     day: 18,
     month: 1
   },
   {
-    title: "Do you have a bad habit? Which one?",
+    title: "¿Tienes un mal hábito? ¿Cual?",
     day: 19,
     month: 1
   },
   {
-    title: "What makes you happy?",
+    title: "¿Que te hace felíz?",
     day: 20,
     month: 1
   },
   {
-    title: "Is there anything everyone likes, but not you?",
+    title: "¿Hay algo que a todos les guste, pero a ti no?",
     day: 21,
     month: 1
   },
   {
-    title: "Are you proud or forgive easily?",
+    title: "¿Eres orgulloso o perdonas fácilmente?",
     day: 22,
     month: 1
   },
   {
-    title: "Do you want to have children?",
+    title: "¿Quieres tener hijos?",
     day: 23,
     month: 1
   },
   {
-    title: "Did you do something crazy for love?",
+    title: "¿Hiciste alguna locura por amor?",
     day: 24,
     month: 1
   },
   {
-    title: "Are you allergic to any food?",
+    title: "¿Eres alérgico a alguna comida?",
     day: 25,
     month: 1
   },
   {
-    title: "Beach or mountain?",
+    title: "¿Playa o montaña?",
     day: 26,
     month: 1
   },
   {
-    title: "Do you want to remember something today?",
+    title: "¿Quieres recordar algo sobre hoy?",
     day: 27,
     month: 1
   },
   {
-    title: "Are you happy?",
+    title: "¿Eres feliz?",
     day: 28,
     month: 1
   },
   {
-    title: "Do you regret anything?",
+    title: "¿Te arrepientes de algo?",
     day: 29,
     month: 1
   },
   {
-    title: "Have you met anyone interesting lately?",
+    title: "¿Has conocido alguien interesante ultimamente?",
     day: 30,
     month: 1
   },
   {
-    title: "Are you interested in art, fashion, etc?",
+    title: "¿Estás interesado en arte, fashion, etc?",
     day: 31,
     month: 1
   },
   {
-    title: "Who do you live with?",
+    title: "¿Con quien vives?",
     day: 1,
     month: 2
   },
   {
-    title: "What's the weather like?",
+    title: "¿Como esta el clima?",
     day: 2,
     month: 2
   },
   {
-    title: "Are you bored of something or someone?",
+    title: "¿Estás aburrido de algo o alguien?",
     day: 3,
     month: 2
   },
   {
-    title: "Are you in love?",
+    title: "¿Estás enamorado?",
     day: 4,
     month: 2
   },
   {
-    title: "What are three things you have to buy?",
+    title: "Escribe 3 cosas que necesites comprar",
     day: 5,
     month: 2
   },
   {
-    title: "How did you get to work today?",
+    title: "¿Como llegaste al trabajo hoy?",
     day: 6,
     month: 2
   },
   {
-    title: "Who is the craziest person in your life?",
+    title: "¿Quien es la persona mas loca en tu vida?",
     day: 7,
     month: 2
   },
   {
-    title: "What is the current buzzword?",
+    title: "Escribe una palabra que repitas frecuentemente",
     day: 8,
     month: 2
   },
   {
-    title: "what's the last dream you remember?",
+    title: "¿Cual es el último sueño que recuerdas?",
     day: 9,
     month: 2
   },
   {
-    title: "Name one item you can't throw out",
+    title: "Nombra una cosa, de la cual no te puedes deshacer",
     day: 10,
     month: 2
   },
   {
-    title: "Do you admire someone?",
+    title: "¿Admiras a alguien?",
     day: 11,
     month: 2
   },
   {
-    title: "When was the last time you were sick?",
+    title: "¿Cuando fue la última vez que te enfermaste?",
     day: 12,
     month: 2
   },
   {
-    title: "Is there something that worries you?",
+    title: "¿Hay algo que te preocupe?",
     day: 13,
     month: 2
   },
   {
-    title: "Did you kiss someone today?",
+    title: "¿Besaste  a alguien hoy?",
     day: 14,
     month: 2
   },
   {
-    title: "Write down the cure for a broken heart",
+    title: "¿Cual es la cura para un corazón roto?",
     day: 15,
     month: 2
   },
   {
-    title: "Do you like the country where you live?",
+    title: "¿Te gusta el país donde vives?",
     day: 16,
     month: 2
   },
   {
-    title: "Is there anything you want to change in your life?",
+    title: "¿Hay algo que quieras cambiar en tu vida?",
     day: 17,
     month: 2
   },
   {
-    title: "What do you need to buy urgently?",
+    title: "¿Que necesitas comprar urgentemente?",
     day: 18,
     month: 2
   },
   {
-    title: "What was the last movie you saw in the cinema?",
+    title: "¿Cual fue la última película que viste en el cine?",
     day: 19,
     month: 2
   },
   {
-    title: "Which is your favorite dessert?",
+    title: "¿Cual es tu postre favorito?",
     day: 20,
     month: 2
   },
   {
-    title: "Are you addicted to something?",
+    title: "¿Eres adicto a algo?",
     day: 21,
     month: 2
   },
   {
-    title: "iOS or Android?",
+    title: "¿iOS o Android?",
     day: 22,
     month: 2
   },
   {
-    title: "Do you think the government is spying on us?",
+    title: "¿Crees, que el gobierno nos espía?",
     day: 23,
     month: 2
   },
   {
-    title: "Do you play any instrument?",
+    title: "¿Tocas algún instrumento?",
     day: 24,
     month: 2
   },
   {
-    title: "Do you miss someone?",
+    title: "¿Extrañas a alguien?",
     day: 25,
     month: 2
   },
   {
-    title: "Do you believe in any conspiric theory?",
+    title: "¿Crees alguna teoría conspirativa?",
     day: 26,
     month: 2
   },
   {
-    title: "Are you friends with your coworkers?",
+    title: "¿Eres amigo de tus compañeros de trabajo?",
     day: 27,
     month: 2
   },
   {
-    title: "Marvel or DC?",
+    title: "¿Marvel o DC?",
     day: 28,
     month: 2
   },
   {
-    title: "How many hours do you sleep?",
+    title: "¿Cuantas horas duermes?",
     day: 29,
     month: 2
   },
   {
-    title: "Salty or sweet?",
+    title: "¿Salado o dulce?",
     day: 1,
     month: 3
   },
   {
-    title: "Who's your nemesis?",
+    title: "¿Quien es tu enemigo?",
     day: 2,
     month: 3
   },
   {
-    title: "It's not a good idea to experiment with?",
+    title: "¿No es buena idea experimentar con?",
     day: 3,
     month: 3
   },
   {
-    title: "A person you wanted to ignore today?",
+    title: "¿Que persona quieres ignorar hoy?",
     day: 4,
     month: 3
   },
   {
-    title: "Instagram or Facebook?",
+    title: "¿Instagram o Facebook?",
     day: 5,
     month: 3
   },
   {
-    title: "If could add one hour to your day, what would yo do with it?",
+    title: "Si pudieras agregar una hora diaria a tu día ¿Que harías con ella?",
     day: 6,
     month: 3
   },
   {
-    title: "Are you too old for TikTok?",
+    title: " ¿Eres muy viejo para TikTok?",
     day: 7,
     month: 3
   },
   {
-    title: "What new activity have you tried?",
+    title: " ¿Que nueva actividad has probado?",
     day: 8,
     month: 3
   },
   {
-    title: "The end justifies the means?",
+    title: " ¿El fin justifica los medios?",
     day: 9,
     month: 3
   },
   {
-    title: "Recent news?",
+    title: "¿Nuevas noticias?",
     day: 10,
     month: 3
   },
   {
-    title: "What is your favorite comedian?",
+    title: "¿Cual es tu comediante favorito?",
     day: 11,
     month: 3
   },
   {
-    title: "When was the last time you felt like you were on top of the world?",
+    title: "Cuando fue la última vez, que te sentiste en la cima del mundo?",
     day: 12,
     month: 3
   },
