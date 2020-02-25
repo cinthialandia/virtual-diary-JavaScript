@@ -1,114 +1,121 @@
+/*todo el cuerpo tendra la misma letra*/
 body {
-  background-color: #8f95e3;
-  padding: 50px;
-  color: #101028;
-  font-family: "Quicksand";
+    background-color: #8f95e3;
+    padding: 30px;
+    color: #101028;
+    font-family: 'Quicksand';
 }
-
-.card {
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 10px;
-}
-/*img style*/
-.img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-h2 {
-  color: #e678a7;
-}
-
-.title {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-
-.answer {
-  display: flex;
-  justify-content: center;
-}
-
-.name-input {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-
-.container-button {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-
-.btn.btn-primary {
-  background-color: #fca82e;
-  border-color: #e1b064;
-  min-height: 40px;
-  min-width: 96px;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active {
-  background-color: #e1b064;
-  border-color: #e1b064;
-}
-
-.head {
-  display: flex;
-  align-items: baseline;
-}
-
-.name-owner {
-  flex-grow: 1;
-  padding: 20px;
-}
-
-.date {
-  flex-grow: 1;
-  padding: 20px;
-}
-.question {
-  display: flex;
-  justify-content: center;
-}
-
-.answer-input {
-  display: flex;
-  justify-content: center;
-}
-
-.answer-input input {
-  width: 250px;
-  height: 50px;
-}
-
-.name-input input {
-  width: 250px;
-  height: 50px;
-}
-
 .year {
-  padding: 10px;
+    color: #e678a7;
 }
 
-.last-answer {
-  font-style: italic;
-  color: #3f4142;
-  text-align: center;
+/*Con esto se crea la carta blanca que se encuentra encima del fondo morado*/
+.card {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px;
 }
-
-.lastestAnswer {
-  display: flex;
-  justify-content: center;
-}
-
-#section-question {
-  display: none;
-}
-
 #welcome-section {
-  display: none;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
+.input-field {
+    margin-top: 70px;
+}
+
+.container-welcome {
+    flex: 1;
+    padding-left: 70px;
+}
+
+.img-container {
+    flex: 1;
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+}
+
+/*Estilo de todos los botones*/
+.btn.btn-primary {
+    background-color: #fca82e;
+    border-color: #e1b064;
+    min-height: 30px;
+    min-width: 130px;
+    font-family: 'Quicksand';
+}
+
+/*Cuando se activen y haga un ligero cambio pero siempre tenga el mismo estilo*/
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #e1b064;
+    border-color: #e1b064;
+}
+
+.input-field input[type='text']:active,
+.input-field input[type='text']:focus {
+    border-bottom: 1px solid #e1b064;
+    box-shadow: 0 1px 0 0 #fca82e;
+}
+.name-owner {
+    color: #e678a7;
+}
+
+/* NO BORRARRR NO TE VOLVAIS LOCA QUE ES LO QUE TAPA O NO LAS PANTALLAS */
+#section-question.section-hiden,
+#welcome-section.section-hiden {
+    display: none;
+}
+
+/* NO BORRARRR NO TE VOLVAIS LOCA QUE ES LO QUE TAPA O NO LAS PANTALLAS */
+
+/* day picker*/
+
+[type='date']:focus {
+    border-bottom: 1px solid #fca82e;
+    box-shadow: 0 1px 0 0 #fca82e;
+}
+
+[type='date']::-webkit-clear-button {
+    display: none;
+}
+
+[type='date']::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type='date']::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    color: #fca82e;
+    border: 2px solid;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+[type='date']::-webkit-calendar-picker-indicator:hover {
+    background-color: #fca82e;
+    color: white;
+    border: 2px solid #fca82e;
+}
+/* day picker*/
+
+/* This query was necessary for changing the size of the elements on mobile cellphone*/
+@media only screen and (max-width: 800px) {
+    /*welcome section media query*/
+    #welcome-section {
+        display: flex;
+        flex-direction: column;
+    }
+    .input-field {
+        margin-top: 30px;
+    }
+
+    .img-container img {
+        width: 100%;
+        height: auto;
+    }
+    .container-welcome {
+        padding-left: 0px;
+    }
 }

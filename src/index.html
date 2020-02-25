@@ -1,86 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Diary</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link rel="stylesheet" href="/public/style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!--answer question screen -->
-    <div class="card z-depth-4">
-      <div class="card-content">
-        <section id="section-question">
-          <div class="head">
-            <p class="name-owner"></p>
-            <label class="date" for="start"
-              >Start date:
-              <input name="datepicker" type="date" />
-            </label>
-          </div>
-          <form class="question-form">
-            <h1 class="question center-align"></h1>
-            <div>
-              <div class="answer">
-                <h2 class="year">2021</h2>
-                <input
-                  id="answer"
-                  type="text"
-                  placeholder="Enter your answer"
-                  name="answer"
-                  required
-                />
-              </div>
-              <!--button save submit -->
-              <div class="container-button">
-                <button id="submit" class="btn btn-primary" type="submit">
-                  Save
-                </button>
-              </div>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Diary</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+        <link rel="stylesheet" href="/public/style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="card z-depth-4">
+            <div class="card-content">
+                <!--answer question screen -->
+                <section class="section-hiden" id="section-question">
+                    <div class="row">
+                        <div class="col s6 m6 l6">
+                            <p class="name-owner"></p>
+                        </div>
+                        <div class="col s6 m6 l6">
+                            <label class="date" for="start">
+                                <input name="datepicker" type="date" />
+                            </label>
+                        </div>
+                        <form class="question-form">
+                            <h1 class="question center-align"></h1>
+                            <div class="row">
+                                <div class="answer">
+                                    <div class="col l4"></div>
+                                    <div class="col s4 l2">
+                                        <h3 class="year"></h3>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <textarea id="answer" class="materialize-textarea"></textarea>
+                                        <label for="answer">Answer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--button save submit -->
+                            <div class="row">
+                                <div class="col s5 l6"></div>
+                                <div class="container-button">
+                                    <button class="btn btn-primary" type="submit">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="emptyDiv"></div>
+                </section>
+                <!--Welcome section-->
+                <section class="section-hiden" id="welcome-section">
+                    <!--Principal IMG-->
+                    <div class="img-container">
+                        <img src="/public/images/diaryimg.png" />
+                    </div>
+                    <div class="container-welcome">
+                        <!--Welcome title-->
+                        <h1 class="principal-title">Welcome to your <span style="color: #e678a7">new diary</span></h1>
+                        <!--Form section-->
+                        <form class="form-nameSubmit">
+                            <div class="input-field">
+                                <!--input -->
+                                <input id="name" type="text" class="validate" name="name" />
+                                <label for="name">What's your name?</label>
+                            </div>
+                            <!--button name submit -->
+                            <div class="container-button button-welcome">
+                                <button id="submit" class="btn btn-primary" type="submit">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
             </div>
-          </form>
-          <div class="emptyDiv"></div>
-        </section>
-
-        <!--Welcome section-->
-        <section class="row" id="welcome-section">
-          <h1 class="col s6" class="principal-title">
-            Welcome to your <span style="color: #e678a7">new diary</span>
-          </h1>
-          <img class="col s6" class="img" src="/public/images/diaryimg.png" />
-
-          <form class="form-nameSubmit">
-            <!--NEW INPUT -->
-
-            <!--NEW INPUT -->
-
-            <!--input name -->
-            <input
-              class="col s6"
-              class="name-input"
-              id="name"
-              type="text"
-              name="name"
-              required
-            />
-            <!--button name submit -->
-            <div class="col s6" class="container-button">
-              <button id="submit" class="btn btn-primary" type="submit">
-                Submit
-              </button>
-            </div>
-          </form>
-        </section>
-      </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
 </html>
