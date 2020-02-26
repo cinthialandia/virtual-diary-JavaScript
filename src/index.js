@@ -1,4 +1,4 @@
-import { findQuestionByDate, saveAnswer, findNamesOwner, savesName, saveStartDate } from './db'; // importando métodos de la base de datos
+import { findQuestionByDate, saveAnswer, findNamesOwner, savesName, saveStartDate, getStartingDate } from './db'; // importando métodos de la base de datos
 import { format } from 'date-fns';
 
 //1. QUERY SELECTORS
@@ -7,7 +7,7 @@ const questionElm = document.querySelector('.question');
 //1.2 Estamos seleccionando el input del calendario.
 const datepickerElm = document.querySelector('[name= "datepicker"]');
 //1.3 seleccionar div vacio donde voy a meter las respuestas anteriores
-const emptyDiv = document.querySelector('.emptyDiv');
+const containerRender = document.querySelector('.container-render');
 //1.5 seleccionamos el form donde se encuentra el input y el boton
 const questionForm = document.querySelector('.question-form');
 //1.7 seleccionamos el ano en curso
@@ -43,8 +43,9 @@ function renderQuestionObj(questionObj) {
     <span>${key}: ${value}</span>
     </div>`;
     }
+
     //2.5 estoy inyectando el html en el div vacio.
-    emptyDiv.innerHTML = answersHTML;
+    containerRender.innerHTML = answersHTML;
 }
 
 //3 LOGICA DEL DIA ELEGIDO
@@ -104,7 +105,8 @@ function showTodayQuestion(namesOwner) {
     //que es la de hoy es decir cuando se empieza el diario
     datepickerElm.max = format(todayDate, 'yyyy-MM-dd');
     //seteamos la fecha minima que seria unos dias antes de la fecha max y asi poder dar un rango de tiempo para contestar fechas pasadas
-    datepickerElm.min = '2020-02-15';
+    const dateMin = getStartingDate();
+    datepickerElm.min = dateMin;
 
     //5.3 poner el ano en automatico asi podre tomar como key el valor
     nowYear.innerHTML = `<h3>${currentYear}</h3>`;

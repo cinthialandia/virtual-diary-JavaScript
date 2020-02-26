@@ -78,3 +78,7 @@ export function saveStartDate(starDate) {
     state.startingDate = format(starDate, 'yyyy-MM-dd');
     saveStateInDB(state);
 }
+
+export function getStartingDate() {
+    return state.startingDate;
+}

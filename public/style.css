@@ -10,6 +10,18 @@ body {
     font-size: 35px;
 }
 
+.question {
+    text-align: center;
+}
+/*answers style*/
+
+.lastestAnswer {
+    text-align: center;
+    font-family: 'Quicksand';
+}
+
+/*answers style*/
+
 /*Con esto se crea la carta blanca que se encuentra encima del fondo morado*/
 .card {
     max-width: 1200px;
