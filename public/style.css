@@ -5,8 +5,9 @@ body {
     color: #101028;
     font-family: 'Quicksand';
 }
-.year {
+.year h3 {
     color: #e678a7;
+    font-size: 35px;
 }
 
 /*Con esto se crea la carta blanca que se encuentra encima del fondo morado*/
@@ -15,6 +16,11 @@ body {
     margin: 0 auto;
     border-radius: 10px;
 }
+.name-owner {
+    font-size: 25px;
+    margin: 0px;
+}
+/*Section welcome*/
 #welcome-section {
     display: flex;
     align-items: center;
@@ -37,6 +43,35 @@ body {
     width: 100%;
     height: auto;
 }
+/*Section welcome*/
+
+/*Section question*/
+
+#section-question {
+    padding: 50px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.year {
+    flex-basis: 12%;
+}
+
+.input-button {
+    flex-basis: 45%;
+}
+
+/*Section question*/
 
 /*Estilo de todos los botones*/
 .btn.btn-primary {
@@ -117,5 +152,34 @@ body {
     }
     .container-welcome {
         padding-left: 0px;
+    }
+
+    /*question part*/
+
+    #section-question {
+        padding: 40px;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .container-all {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
+
+    .year {
+        flex-basis: 4%;
+    }
+
+    .input-button {
+        flex-basis: 60%;
+    }
+    .year h3 {
+        font-size: 22px;
     }
 }
