@@ -89,6 +89,7 @@ formWelcome.addEventListener('submit', function submitInput(event) {
     //Utilizamos el name, ya que podemos obtener el valor del mismo, si utilizamos la clase name que tiene el input en el HTML
     const namesOwner = event.target.name.value;
     savesName(namesOwner);
+    saveStartDate(todayDate);
     document.getElementById('welcome-section').classList.add('section-hiden');
     showTodayQuestion(namesOwner);
 });
@@ -103,7 +104,7 @@ function showTodayQuestion(namesOwner) {
     //que es la de hoy es decir cuando se empieza el diario
     datepickerElm.max = format(todayDate, 'yyyy-MM-dd');
     //seteamos la fecha minima que seria unos dias antes de la fecha max y asi poder dar un rango de tiempo para contestar fechas pasadas
-    datepickerElm.min = '2020-02-01';
+    datepickerElm.min = '2020-02-15';
 
     //5.3 poner el ano en automatico asi podre tomar como key el valor
     nowYear.innerHTML = `<h3>${currentYear}</h3>`;
@@ -114,7 +115,6 @@ function showTodayQuestion(namesOwner) {
     // mostar la seccion pregunta
     document.getElementById('section-question').classList.remove('section-hiden');
     //guardar la fecha de comienzo en la base de datos
-    saveStartDate(todayDate);
 }
 
 // Aca empieza a correr la aplicacion
