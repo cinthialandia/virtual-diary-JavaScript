@@ -17189,7 +17189,7 @@ function toDate(argument) {
 /*!*******************!*\
   !*** ./src/db.js ***!
   \*******************/
-/*! exports provided: findQuestionByDate, saveAnswer, findOwnersName, saveOwnersName, saveStartDate, getStartingDate */
+/*! exports provided: findQuestionByDate, saveAnswer, findOwnersName, saveOwnersName */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17198,14 +17198,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveAnswer", function() { return saveAnswer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findOwnersName", function() { return findOwnersName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveOwnersName", function() { return saveOwnersName; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveStartDate", function() { return saveStartDate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStartingDate", function() { return getStartingDate; });
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
-/* harmony import */ var _questions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./questions */ "./src/questions.js");
+/* harmony import */ var _questions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./questions */ "./src/questions.js");
 
-
-const LOCAL_STORAGE_KEY = 'DB';
-const CURRENT_YEAR = new Date().getFullYear(); // state es nuestro estado en memoria.
+const LOCAL_STORAGE_KEY = 'DB'; // state es nuestro estado en memoria.
 
 const state = initState(); //Esta funcion retornara el valor inicial de la base de datos
 
@@ -17216,7 +17211,7 @@ function initState() {
   if (storageValue === null) {
     //2.Si no existe inicializar el local storage con el json de las preguntas setItem()
     const dbinitialValue = {
-      questions: _questions__WEBPACK_IMPORTED_MODULE_1__["default"]
+      questions: _questions__WEBPACK_IMPORTED_MODULE_0__["default"]
     };
     saveStateInDB(dbinitialValue); //3. y luego utilizar esa informacion como el valor de DB
 
@@ -17260,7 +17255,7 @@ function saveAnswer(answer, date) {
     questionToAnswer.answers = {};
   }
 
-  questionToAnswer.answers[CURRENT_YEAR] = answer; //Guardamos el nuevo estado en el local storage
+  questionToAnswer.answers[date.getFullYear()] = answer; //Guardamos el nuevo estado en el local storage
 
   saveStateInDB(state); //lo retorno porque questionobjet necesita el valor de respuesta de esta funcion.
 
@@ -17276,17 +17271,6 @@ function findOwnersName() {
 function saveOwnersName(name) {
   state.owner = name;
   saveStateInDB(state);
-  saveStartDate(new Date());
-} //esta funcion, trae como parametro la fecha seteada del dia de hoy
-// y esta se encarga de guardar esta fecha dentro de la base de datos
-
-function saveStartDate(starDate) {
-  //utilizamos el metodo format, que se esta importando de una libreria para poder setear el formato de la fecha de una manera en particular.
-  state.startingDate = Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["format"])(starDate, 'yyyy-MM-dd');
-  saveStateInDB(state);
-}
-function getStartingDate() {
-  return state.startingDate;
 }
 
 /***/ }),
@@ -17311,7 +17295,6 @@ __webpack_require__.r(__webpack_exports__);
  //import { showTodayQuestion } from './question-section';
 
 _router__WEBPACK_IMPORTED_MODULE_0__["default"].on('welcome', function () {
-  console.log('esta es la pagina de welcome');
   Object(_welcome_section__WEBPACK_IMPORTED_MODULE_2__["initWelcomeForm"])();
 }, {
   before: function (done) {
@@ -17324,7 +17307,6 @@ _router__WEBPACK_IMPORTED_MODULE_0__["default"].on('welcome', function () {
     }
   }
 }).on('*', function () {
-  console.log('Esta es la pagina de home');
   Object(_question_section__WEBPACK_IMPORTED_MODULE_3__["initQuestionForm"])();
 }, {
   before: function (done) {
@@ -17355,13 +17337,17 @@ __webpack_require__.r(__webpack_exports__);
  // importando métodos de la base de datos
 
 
+
+
 const template = `
 <section id="section-question">
     <header class="header">
         <h1 class="name-owner"></h1>
-        <label class="date" for="start">
+        <div class="date-picker-container">
+            <button class="btn-flat waves-effect date-picker-left"><i class="material-icons left">chevron_left</i></button>
             <input name="datepicker" type="date" />
-        </label>
+            <button class="btn-flat waves-effect date-picker-right"><i class="material-icons left">chevron_right</i></button>
+        </div>
     </header>
     <h2 class="question"></h2>
     <form class="question-form">
@@ -17388,16 +17374,16 @@ function getDatePickerElm() {
   return document.querySelector('[name= "datepicker"]');
 }
 
+function getNowYearElm() {
+  return document.querySelector('.year');
+}
+
 function initQuestionForm() {
   const container = document.querySelector('main');
   container.innerHTML = template; //INITAL VALUES
   //1.8 Calcular la fecha de hoy
 
-  const todayDate = new Date(); //1.9 Calcular el año actual
-
-  const currentYear = todayDate.getFullYear(); //fecha en la que inicio el diario el usuario
-
-  const dateMin = Object(_db__WEBPACK_IMPORTED_MODULE_0__["getStartingDate"])(); //owners name
+  const todayDate = new Date(); //owners name
 
   const ownersName = Object(_db__WEBPACK_IMPORTED_MODULE_0__["findOwnersName"])(); //today question
   //5.1 funcion que llama la base de datos y la fecha de hoy que es por defoult
@@ -17409,19 +17395,18 @@ function initQuestionForm() {
 
   const datepickerElm = getDatePickerElm(); //1.7 seleccionamos el ano en curso
 
-  const nowYearElm = container.querySelector('.year'); //1.10 Seleccionamos el DOM del nombre
+  const nowYearElm = getNowYearElm(); //1.10 Seleccionamos el DOM del nombre
 
-  const ownersNameElm = container.querySelector('.name-owner'); // INITIIAL VALUES IN DOM
+  const ownersNameElm = container.querySelector('.name-owner'); //1.11 Selecciamos el boton izquierdo
+
+  const prevDayButtonElm = document.querySelector('.date-picker-left'); // seleccionamos el boton derecho
+
+  const nextDayButtonElm = document.querySelector('.date-picker-right'); // INITIIAL VALUES IN DOM
   //5.2.estamos seteando el calendario en la fecha de hoy
 
-  datepickerElm.value = Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["format"])(todayDate, 'yyyy-MM-dd'); // seteamos la fecha maxima la cual podra escoger el usuario para contestar respuesta
-  //que es la de hoy es decir cuando se empieza el diario
+  datepickerElm.value = Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["format"])(todayDate, 'yyyy-MM-dd'); //5.3 poner el ano en automatico asi podre tomar como key el valor
 
-  datepickerElm.max = Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["format"])(todayDate, 'yyyy-MM-dd'); //seteamos la fecha minima que seria unos dias antes de la fecha max y asi poder dar un rango de tiempo para contestar fechas pasada
-
-  datepickerElm.min = dateMin; //5.3 poner el ano en automatico asi podre tomar como key el valor
-
-  nowYearElm.innerHTML = `${currentYear}`; //se esta inyectando el nombre de la persona
+  nowYearElm.innerHTML = `${todayDate.getFullYear()}`; //se esta inyectando el nombre de la persona
 
   ownersNameElm.innerHTML = `${ownersName}'s Diary`; // 5.4 renderizar la pregunta del día de hoy
 
@@ -17430,6 +17415,8 @@ function initQuestionForm() {
   datepickerElm.addEventListener('input', handleDatepickerInput); //
 
   questionFormElm.addEventListener('submit', handleQuestionFormSubmit);
+  prevDayButtonElm.addEventListener('click', handlePrevDayButtonClick);
+  nextDayButtonElm.addEventListener('click', handleNextDayButtonClick);
 } // LOGICA PARA RENDERIZAR EL TITULO Y LAS RESPUESTAS
 
 function renderQuestionObj(questionObj) {
@@ -17470,6 +17457,7 @@ function handleDatepickerInput(e) {
   const questionObjNewDate = Object(_db__WEBPACK_IMPORTED_MODULE_0__["findQuestionByDate"])(newDate); //3.5 renderizar la pregunta del día elegido
 
   renderQuestionObj(questionObjNewDate);
+  getNowYearElm().innerHTML = newDate.getFullYear();
 } //4. LOGICA DEL SUBMIT
 //4.1 escuchar el evento del input es decir cuando se le da submit al boton
 
@@ -17489,6 +17477,26 @@ function handleQuestionFormSubmit(event) {
   renderQuestionObj(questionObjectUpdated); // utilizamos este metodo para borrar valores del input despues que se hizo submit del mismo
 
   event.target.reset();
+}
+
+function handlePrevDayButtonClick() {
+  const datePickerElm = getDatePickerElm(); //restar un dia a la fecha
+
+  const newDate = Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["subDays"])(datePickerElm.valueAsDate, 1); //mostrar la nueva fecha
+
+  datePickerElm.value = Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["format"])(newDate, 'yyyy-MM-dd'); //
+
+  datePickerElm.dispatchEvent(new Event('input'));
+}
+
+function handleNextDayButtonClick() {
+  const datePickerElm = getDatePickerElm(); //restar un dia a la fecha
+
+  const newDate = Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["addDays"])(datePickerElm.valueAsDate, 1); //mostrar la nueva fecha
+
+  datePickerElm.value = Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["format"])(newDate, 'yyyy-MM-dd'); //
+
+  datePickerElm.dispatchEvent(new Event('input'));
 }
 
 /***/ }),
@@ -17636,7 +17644,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 2,
   month: 2
 }, {
-  title: 'Are you bored of something or someone?',
+  title: 'Are you bored with something or someone?',
   day: 3,
   month: 2
 }, {
@@ -17644,7 +17652,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 4,
   month: 2
 }, {
-  title: 'What are three things you have to buy?',
+  title: 'What are the three things you have to buy?',
   day: 5,
   month: 2
 }, {
@@ -17700,7 +17708,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 18,
   month: 2
 }, {
-  title: 'What was the last movie you saw in the cinema?',
+  title: 'What was the last movie you saw at the cinema?',
   day: 19,
   month: 2
 }, {
@@ -17728,42 +17736,21 @@ __webpack_require__.r(__webpack_exports__);
   day: 25,
   month: 2
 }, {
-  title: 'Do you believe in any conspiric theory?',
+  title: 'Do you believe in any conspiracy theory?',
   day: 26,
   month: 2
 }, {
   title: 'Are you friends with your coworkers?',
   day: 27,
-  month: 2,
-  answers: {
-    2015: 'I hate those people!!!',
-    2016: 'No, they are different!',
-    2017: 'Yes, I made a great team!',
-    2018: 'No!',
-    2019: 'Im not working, so I dont have for now coworkers!'
-  }
+  month: 2
 }, {
   title: 'Marvel or DC?',
   day: 28,
-  month: 2,
-  answers: {
-    2015: 'DC',
-    2016: 'DC',
-    2017: 'DC',
-    2018: 'DC',
-    2019: 'DC'
-  }
+  month: 2
 }, {
   title: 'How many hours do you sleep?',
   day: 29,
-  month: 2,
-  answers: {
-    2015: '10 hours',
-    2016: '9 hours',
-    2017: 'Nothing',
-    2018: '5 hours',
-    2019: '10 hours'
-  }
+  month: 2
 }, {
   title: 'Salty or sweet?',
   day: 1,
@@ -17785,11 +17772,11 @@ __webpack_require__.r(__webpack_exports__);
   day: 5,
   month: 3
 }, {
-  title: 'If could add one hour to your day, what would yo do with it?',
+  title: 'If you could add one hour to your day, what would you do with it?',
   day: 6,
   month: 3
 }, {
-  title: 'Are you too old for TikTok?',
+  title: 'Write down a prediction for the future',
   day: 7,
   month: 3
 }, {
@@ -17797,7 +17784,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 8,
   month: 3
 }, {
-  title: 'The end justifies the means?',
+  title: 'Does the end justify the means?',
   day: 9,
   month: 3
 }, {
@@ -17805,7 +17792,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 10,
   month: 3
 }, {
-  title: 'What is your favorite comedian?',
+  title: 'Who is your favorite comedian?',
   day: 11,
   month: 3
 }, {
@@ -17817,7 +17804,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 13,
   month: 3
 }, {
-  title: 'What inventios can you not live without?',
+  title: 'What inventions can you not live without?',
   day: 14,
   month: 3
 }, {
@@ -17845,7 +17832,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 20,
   month: 3
 }, {
-  title: 'What’s A Movie You Can Practically Quote From Start To Finish?',
+  title: "What's A Movie You Can Practically Quote From Start To Finish?",
   day: 21,
   month: 3
 }, {
@@ -17857,7 +17844,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 23,
   month: 3
 }, {
-  title: 'What’s The Most Interesting Thing You’ve Read Or Seen This Week?',
+  title: "What's The Most Interesting Thing You’ve Read Or Seen This Week?",
   day: 24,
   month: 3
 }, {
@@ -17873,7 +17860,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 27,
   month: 3
 }, {
-  title: 'How Did You Find Out That Santa Isn’t Real?',
+  title: "How Did You Find Out That Santa Isn't Real?",
   day: 28,
   month: 3
 }, {
@@ -17881,7 +17868,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 29,
   month: 3
 }, {
-  title: 'McDonald’s or Burger King?',
+  title: "McDonald's or Burger King?",
   day: 30,
   month: 3
 }, {
@@ -17909,7 +17896,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 5,
   month: 4
 }, {
-  title: 'If could acquiere a talent (without any extra effort), what would it be?',
+  title: 'If could acquire a talent (without any extra effort), what would it be?',
   day: 6,
   month: 4
 }, {
@@ -18017,7 +18004,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 2,
   month: 5
 }, {
-  title: 'If could have a superpower just for today what would it be?',
+  title: 'If it could have a superpower just for today what would it be?',
   day: 3,
   month: 5
 }, {
@@ -18045,7 +18032,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 9,
   month: 5
 }, {
-  title: "What's the most creative thing you're done recently?",
+  title: "What's the most creative thing you've done recently?",
   day: 10,
   month: 5
 }, {
@@ -18065,15 +18052,15 @@ __webpack_require__.r(__webpack_exports__);
   day: 14,
   month: 5
 }, {
-  title: 'have you been unfaithful?',
+  title: 'Have you been unfaithful?',
   day: 15,
   month: 5
 }, {
-  title: 'What’s the most useless talent you have?',
+  title: "What's the most useless talent you have?",
   day: 16,
   month: 5
 }, {
-  title: ' What is the dumbest way you’ve been injured?',
+  title: "What is the dumbest way you've been injured?",
   day: 17,
   month: 5
 }, {
@@ -18093,11 +18080,11 @@ __webpack_require__.r(__webpack_exports__);
   day: 21,
   month: 5
 }, {
-  title: 'What was the best phase in your life?',
+  title: 'What was the best phase of your life?',
   day: 22,
   month: 5
 }, {
-  title: 'What is a relationship deal breaker for you?',
+  title: 'What is a relationship deal-breaker for you?',
   day: 23,
   month: 5
 }, {
@@ -18137,7 +18124,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 1,
   month: 6
 }, {
-  title: 'On scale of one to ten, how healthy are you?',
+  title: 'On a scale of one to ten, how healthy are you?',
   day: 2,
   month: 6
 }, {
@@ -18173,11 +18160,11 @@ __webpack_require__.r(__webpack_exports__);
   day: 10,
   month: 6
 }, {
-  title: 'What is the craziest thing you’ve ever done and would you do it again?',
+  title: "What is the craziest thing you've ever done and would you do it again?",
   day: 11,
   month: 6
 }, {
-  title: 'What did you want to be when you were younger?',
+  title: 'Have you tried a new food? Did you like it?',
   day: 12,
   month: 6
 }, {
@@ -18201,7 +18188,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 17,
   month: 6
 }, {
-  title: 'What are three things you value most about a person?',
+  title: 'What are the three things you value most about a person?',
   day: 18,
   month: 6
 }, {
@@ -18209,7 +18196,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 19,
   month: 6
 }, {
-  title: 'What is the greatest struggle you’ve overcome?',
+  title: "What is the greatest struggle you've overcome?",
   day: 20,
   month: 6
 }, {
@@ -18217,15 +18204,15 @@ __webpack_require__.r(__webpack_exports__);
   day: 21,
   month: 6
 }, {
-  title: 'Who was your favorite teacher and why?',
+  title: 'Are you studying something new? What is it?',
   day: 22,
   month: 6
 }, {
-  title: 'Who is your favorite historical figure?',
+  title: "Tell me something you've changed your mind recently",
   day: 23,
   month: 6
 }, {
-  title: 'What’s closest you’ve ever come to being arrested?',
+  title: "What’s closest you've ever come to being arrested?",
   day: 24,
   month: 6
 }, {
@@ -18245,7 +18232,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 28,
   month: 6
 }, {
-  title: 'Have you ever seen something you can’t explain?',
+  title: "Have you ever seen something you can't explain?",
   day: 29,
   month: 6
 }, {
@@ -18253,11 +18240,11 @@ __webpack_require__.r(__webpack_exports__);
   day: 30,
   month: 6
 }, {
-  title: 'What is the most clever or funniest use of advertising you’ve seen?',
+  title: "What is the most clever or funniest use of advertising you've seen?",
   day: 1,
   month: 7
 }, {
-  title: 'Whar was the last beach you went to?',
+  title: 'What was the last beach you went to?',
   day: 2,
   month: 7
 }, {
@@ -18317,7 +18304,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 16,
   month: 7
 }, {
-  title: 'What’s something that a lot of people are missing out on because they don’t know about it?',
+  title: "What's something that a lot of people are missing out on because they don't know about it?",
   day: 17,
   month: 7
 }, {
