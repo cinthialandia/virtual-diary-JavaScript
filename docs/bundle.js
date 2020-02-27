@@ -18312,11 +18312,11 @@ __webpack_require__.r(__webpack_exports__);
   day: 18,
   month: 7
 }, {
-  title: 'What’s something that was once important but is now becoming less and less relevant?',
+  title: "What's something that was once important but is now becoming less and less relevant?",
   day: 19,
   month: 7
 }, {
-  title: 'Where’s your favorite place to nap?',
+  title: "Where's your favorite place to nap?",
   day: 20,
   month: 7
 }, {
@@ -18324,7 +18324,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 21,
   month: 7
 }, {
-  title: 'What’s the weirdest way you have met someone?',
+  title: "What's the weirdest way you've met someone?",
   day: 22,
   month: 7
 }, {
@@ -18332,7 +18332,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 23,
   month: 7
 }, {
-  title: 'What was the scariest movie you’ve seen?',
+  title: "What was the scariest movie you've seen?",
   day: 24,
   month: 7
 }, {
@@ -18340,7 +18340,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 25,
   month: 7
 }, {
-  title: 'What is the biggest mistake you’ve made at work?',
+  title: "What is the biggest mistake you've made at work?",
   day: 26,
   month: 7
 }, {
@@ -18380,7 +18380,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 4,
   month: 8
 }, {
-  title: 'When was the las time you worked out?',
+  title: 'When was the last time you worked out?',
   day: 5,
   month: 8
 }, {
@@ -18432,11 +18432,11 @@ __webpack_require__.r(__webpack_exports__);
   day: 17,
   month: 8
 }, {
-  title: 'If you were so wealthy you didn’t need to work, what would you do with your time?',
+  title: "If you were so wealthy you didn't need to work, what would you do with your time?",
   day: 18,
   month: 8
 }, {
-  title: 'What’s your favorite month?',
+  title: 'What is your favorite album?',
   day: 19,
   month: 8
 }, {
@@ -18484,7 +18484,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 30,
   month: 8
 }, {
-  title: 'What is the most awkward situation you’ve experienced recently?',
+  title: "What is the most awkward situation you've experienced recently?",
   day: 31,
   month: 8
 }, {
@@ -18536,7 +18536,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 12,
   month: 9
 }, {
-  title: 'Would you relocate to a place where you don’t have any family or friends?',
+  title: "Would you relocate to a place where you don't have any family or friends?",
   day: 13,
   month: 9
 }, {
@@ -18584,7 +18584,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 24,
   month: 9
 }, {
-  title: 'What’s worse: Laundry or Dishes?',
+  title: 'Which one is worse: Laundry or Dishes?',
   day: 25,
   month: 9
 }, {
@@ -18656,7 +18656,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 12,
   month: 10
 }, {
-  title: 'In three words. describe your love life.',
+  title: 'In three words describe your love life.',
   day: 13,
   month: 10
 }, {
@@ -18664,7 +18664,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 14,
   month: 10
 }, {
-  title: 'Yo want a new?',
+  title: 'You want a new?',
   day: 15,
   month: 10
 }, {
@@ -18720,7 +18720,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 28,
   month: 10
 }, {
-  title: 'What was the best birthday wish or gift you’ve ever received?',
+  title: "What was the best birthday wish or gift you've ever received?",
   day: 29,
   month: 10
 }, {
@@ -18740,7 +18740,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 2,
   month: 11
 }, {
-  title: 'did you leave work on time?',
+  title: 'Did you leave work on time?',
   day: 3,
   month: 11
 }, {
@@ -18780,7 +18780,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 12,
   month: 11
 }, {
-  title: 'What’s wrong but sounds right?',
+  title: "What's wrong but sounds right?",
   day: 13,
   month: 11
 }, {
@@ -18800,7 +18800,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 17,
   month: 11
 }, {
-  title: 'What outdoor activity haven’t you tried, but would like to?',
+  title: "What outdoor activity haven't you tried, but would like to?",
   day: 18,
   month: 11
 }, {
@@ -18812,7 +18812,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 20,
   month: 11
 }, {
-  title: 'What’s the most interesting documentary you’ve ever watched?',
+  title: "What's the most interesting documentary you've ever watched?",
   day: 21,
   month: 11
 }, {
@@ -18820,7 +18820,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 22,
   month: 11
 }, {
-  title: 'How do you make yourself sleep when you can’t seem to get to sleep?',
+  title: "How do you make yourself sleep when you can't seem to get to sleep?",
   day: 23,
   month: 11
 }, {
@@ -18844,7 +18844,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 28,
   month: 11
 }, {
-  title: 'What’s the most amazing true story you’ve heard?',
+  title: "What's the most amazing true story you've heard?",
   day: 29,
   month: 11
 }, {
@@ -18884,7 +18884,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 8,
   month: 12
 }, {
-  title: ' What Is Your Favorite Combination Of Colors?',
+  title: 'What Is Your Favorite Combination Of Colors?',
   day: 9,
   month: 12
 }, {
@@ -18904,7 +18904,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 13,
   month: 12
 }, {
-  title: 'What’s the funniest TV show you’ve ever seen?',
+  title: "What's the funniest TV show you've ever seen?",
   day: 14,
   month: 12
 }, {
@@ -18920,7 +18920,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 17,
   month: 12
 }, {
-  title: 'What’s your best example of easy come, easy go?',
+  title: "What's your best example of easy come, easy go?",
   day: 18,
   month: 12
 }, {
@@ -18928,7 +18928,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 19,
   month: 12
 }, {
-  title: 'Who is the most manipulative person you’ve ever met?',
+  title: "Who is the most manipulative person you've ever met?",
   day: 20,
   month: 12
 }, {
@@ -18936,7 +18936,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 21,
   month: 12
 }, {
-  title: 'What is the weirdest thing you have seen in someone else’s home?',
+  title: "What is the weirdest thing you've seen in someone else's home?",
   day: 22,
   month: 12
 }, {
@@ -18964,7 +18964,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 28,
   month: 12
 }, {
-  title: 'What did you eat so much of that now you hate it?',
+  title: 'What did you eat so much of something and now you hate it?',
   day: 29,
   month: 12
 }, {
@@ -18972,7 +18972,7 @@ __webpack_require__.r(__webpack_exports__);
   day: 30,
   month: 12
 }, {
-  title: 'what is your most cherished memory of this year?',
+  title: 'What is your most cherished memory of this year?',
   day: 31,
   month: 12
 }]);
