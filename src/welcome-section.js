@@ -1,11 +1,11 @@
-import { saveOwnersName, saveStartDate } from './db';
+import { saveOwnersName } from './db';
 import router from './router';
 
 const template = `
 <section id="welcome-section">
     <!--Principal IMG-->
     <div class="img-container">
-        <img src="/public/images/diaryimg.png" />
+        <img src="public/images/diaryimg.png" />
     </div>
     <div class="container-welcome">
         <!--Welcome title-->
