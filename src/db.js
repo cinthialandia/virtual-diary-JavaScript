@@ -1,8 +1,6 @@
-import { format } from 'date-fns';
 import questions from './questions';
 
 const LOCAL_STORAGE_KEY = 'DB';
-const CURRENT_YEAR = new Date().getFullYear();
 // state es nuestro estado en memoria.
 const state = initState();
 
@@ -55,7 +53,7 @@ export function saveAnswer(answer, date) {
     if (!questionToAnswer.answers) {
         questionToAnswer.answers = {};
     }
-    questionToAnswer.answers[CURRENT_YEAR] = answer;
+    questionToAnswer.answers[date.getFullYear()] = answer;
     //Guardamos el nuevo estado en el local storage
     saveStateInDB(state);
     //lo retorno porque questionobjet necesita el valor de respuesta de esta funcion.
@@ -71,17 +69,4 @@ export function findOwnersName() {
 export function saveOwnersName(name) {
     state.owner = name;
     saveStateInDB(state);
-    saveStartDate(new Date());
-}
-
-//esta funcion, trae como parametro la fecha seteada del dia de hoy
-// y esta se encarga de guardar esta fecha dentro de la base de datos
-export function saveStartDate(starDate) {
-    //utilizamos el metodo format, que se esta importando de una libreria para poder setear el formato de la fecha de una manera en particular.
-    state.startingDate = format(starDate, 'yyyy-MM-dd');
-    saveStateInDB(state);
-}
-
-export function getStartingDate() {
-    return state.startingDate;
 }

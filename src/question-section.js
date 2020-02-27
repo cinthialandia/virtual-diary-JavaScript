@@ -1,4 +1,4 @@
-import { saveAnswer, findQuestionByDate, getStartingDate, findOwnersName } from './db'; // importando métodos de la base de datos
+import { saveAnswer, findQuestionByDate, findOwnersName } from './db'; // importando métodos de la base de datos
 import { format } from 'date-fns';
 
 const template = `
@@ -34,6 +34,10 @@ function getDatePickerElm() {
     return document.querySelector('[name= "datepicker"]');
 }
 
+function getNowYearElm() {
+    return document.querySelector('.year');
+}
+
 export function initQuestionForm() {
     const container = document.querySelector('main');
     container.innerHTML = template;
@@ -41,10 +45,6 @@ export function initQuestionForm() {
     //INITAL VALUES
     //1.8 Calcular la fecha de hoy
     const todayDate = new Date();
-    //1.9 Calcular el año actual
-    const currentYear = todayDate.getFullYear();
-    //fecha en la que inicio el diario el usuario
-    const dateMin = getStartingDate();
     //owners name
     const ownersName = findOwnersName();
     //today question
@@ -57,21 +57,15 @@ export function initQuestionForm() {
     //1.2 Estamos seleccionando el input del calendario.
     const datepickerElm = getDatePickerElm();
     //1.7 seleccionamos el ano en curso
-    const nowYearElm = container.querySelector('.year');
+    const nowYearElm = getNowYearElm();
     //1.10 Seleccionamos el DOM del nombre
     const ownersNameElm = container.querySelector('.name-owner');
 
     // INITIIAL VALUES IN DOM
     //5.2.estamos seteando el calendario en la fecha de hoy
     datepickerElm.value = format(todayDate, 'yyyy-MM-dd');
-    // seteamos la fecha maxima la cual podra escoger el usuario para contestar respuesta
-    //que es la de hoy es decir cuando se empieza el diario
-    datepickerElm.max = format(todayDate, 'yyyy-MM-dd');
-    //seteamos la fecha minima que seria unos dias antes de la fecha max y asi poder dar un rango de tiempo para contestar fechas pasada
-    datepickerElm.min = dateMin;
-
     //5.3 poner el ano en automatico asi podre tomar como key el valor
-    nowYearElm.innerHTML = `${currentYear}`;
+    nowYearElm.innerHTML = `${todayDate.getFullYear()}`;
     //se esta inyectando el nombre de la persona
     ownersNameElm.innerHTML = `${ownersName}'s Diary`;
     // 5.4 renderizar la pregunta del día de hoy
@@ -127,6 +121,7 @@ function handleDatepickerInput(e) {
 
     //3.5 renderizar la pregunta del día elegido
     renderQuestionObj(questionObjNewDate);
+    getNowYearElm().innerHTML = newDate.getFullYear();
 }
 
 //4. LOGICA DEL SUBMIT
