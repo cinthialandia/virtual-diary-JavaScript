@@ -5,8 +5,20 @@ body {
     color: #101028;
     font-family: 'Quicksand';
 }
-.year h3 {
+.answers-title {
+    font-size: medium;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: -15px;
+    color: #a8a8a8;
+}
+
+.owner-form {
+    padding-top: 15px;
+}
+.year {
     color: #e678a7;
+    padding-right: 15px;
     font-size: 35px;
 }
 
@@ -14,11 +26,6 @@ body {
     text-align: center;
 }
 /*answers style*/
-
-.lastestAnswer {
-    text-align: center;
-    font-family: 'Quicksand';
-}
 
 /*answers style*/
 
@@ -31,15 +38,13 @@ body {
 .name-owner {
     font-size: 25px;
     margin: 0px;
+    font-weight: bold;
 }
 /*Section welcome*/
 #welcome-section {
     display: flex;
     align-items: center;
     padding: 50px;
-}
-.input-field {
-    margin-top: 70px;
 }
 
 .container-welcome {
@@ -69,10 +74,10 @@ body {
     justify-content: space-between;
 }
 
-.container-all {
+.question-form {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .year {
@@ -81,6 +86,19 @@ body {
 
 .input-button {
     flex-basis: 45%;
+}
+/*input color differente*/
+
+textarea.materialize-textarea:focus:not([readonly]),
+input[type='date']:not(.browser-default):focus:not([readonly]),
+input[type='text']:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #fca82e;
+    box-shadow: 0 1px 0 0 #fca82e;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type='text']:not(.browser-default):focus:not([readonly]) + label {
+    color: #fca82e;
 }
 
 /*Section question*/
@@ -147,9 +165,68 @@ body {
 }
 /* day picker*/
 
+/*timeline*/
+
+.answers-container {
+    border-left: 2px solid #a8a8a8;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    color: #101216;
+    margin: 0 auto;
+    position: relative;
+    padding: 70px 0 0px 0;
+    list-style: none;
+    max-width: 50%;
+}
+.answers-container:before {
+    left: -8px;
+    top: -75px;
+    background: #a8a8a8;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+}
+
+.event {
+    padding-left: 30px;
+    margin-bottom: 40px;
+    position: relative;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    word-wrap: break-word;
+}
+.event:last-of-type {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
+}
+.event:before,
+.event:after {
+    position: absolute;
+    display: block;
+    top: 0;
+}
+.event:before {
+    content: attr(data-date);
+    font-weight: bold;
+    color: #e678a7;
+    text-align: center;
+    background-color: white;
+    left: -20px;
+}
+
+/*timeline*/
+
 /* This query was necessary for changing the size of the elements on mobile cellphone*/
 @media only screen and (max-width: 800px) {
     /*welcome section media query*/
+    body {
+        padding: 15px;
+    }
     #welcome-section {
         display: flex;
         flex-direction: column;
@@ -167,30 +244,36 @@ body {
     }
 
     /*question part*/
+    .name-owner {
+        padding-bottom: 15px;
+    }
 
     #section-question {
-        padding: 40px;
+        padding: 15px;
     }
 
     .header {
         display: flex;
         align-items: center;
-    }
-
-    .container-all {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-around;
+        flex-direction: column;
     }
 
     .year {
-        flex-basis: 4%;
+        flex-basis: auto;
+        flex: 0;
+        padding-right: 20px;
+        margin-left: -15px;
     }
 
     .input-button {
-        flex-basis: 60%;
+        flex-basis: auto;
+        flex: 1;
     }
     .year h3 {
         font-size: 22px;
+    }
+
+    .answers-container {
+        max-width: 100%;
     }
 }

@@ -11,24 +11,21 @@ const template = `
     </header>
     <h2 class="question"></h2>
     <form class="question-form">
-        <div class="answer">
-            <div class="container-all">
-                <h3 class="year"></h3>
-                <div class="input-button">
-                    <div class="input-field">
-                        <textarea id="answer" class="materialize-textarea"></textarea>
-                        <label for="answer">Answer</label>
-                    </div>
-                    <!--button save submit -->
-                    <div class="container-button">
-                        <button class="btn btn-primary" type="submit">
-                            Save
-                        </button>
-                    </div>
-                </div>
+        <h3 class="year"></h3>
+        <div class="input-button">
+            <div class="input-field">
+                <textarea id="answer" class="materialize-textarea"></textarea>
+                <label for="answer">Answer</label>
+            </div>
+            <!--button save submit -->
+            <div class="container-button">
+                <button class="btn btn-primary" type="submit">
+                    Save
+                </button>
             </div>
         </div>
     </form>
+    <h2 class="answers-title">Previous answers</h2>
     <ul class="answers-container"></ul>
 </section>
 `;
@@ -74,7 +71,7 @@ export function initQuestionForm() {
     datepickerElm.min = dateMin;
 
     //5.3 poner el ano en automatico asi podre tomar como key el valor
-    nowYearElm.innerHTML = `<h3>${currentYear}</h3>`;
+    nowYearElm.innerHTML = `${currentYear}`;
     //se esta inyectando el nombre de la persona
     ownersNameElm.innerHTML = `${ownersName}'s Diary`;
     // 5.4 renderizar la pregunta del día de hoy
@@ -98,6 +95,7 @@ function renderQuestionObj(questionObj) {
 
     // Si la pregunta no tiene respuesta, return nada. y asi no va a tratar renderizar algo que no existe.
     if (!questionObj.answers) {
+        answerContainerElm.innerHTML = '';
         return;
     }
 
@@ -109,7 +107,7 @@ function renderQuestionObj(questionObj) {
     //2.3 Realizamos el for para escoger mostrar el key y value, se hace un loop sobre un objeto y extraer los valores.
     for (let [key, value] of answersEntries) {
         //2.4 guardamos en la variable que se asigno arriba el valor del for, y para que se guarden todos se hace una concatenacion de los strings
-        answersHTML = `${answersHTML} <li>${key}: ${value}</li>`;
+        answersHTML = `${answersHTML} <li  class="event" data-date="${key}">${value}</li>`;
     }
 
     //2.5 estoy inyectando el html en el div vacio.

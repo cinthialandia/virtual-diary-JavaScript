@@ -289,16 +289,37 @@ export default [
         title: 'Are you friends with your coworkers?',
         day: 27,
         month: 2,
+        answers: {
+            2015: 'I hate those people!!!',
+            2016: 'No, they are different!',
+            2017: 'Yes, I made a great team!',
+            2018: 'No!',
+            2019: 'Im not working, so I dont have for now coworkers!',
+        },
     },
     {
         title: 'Marvel or DC?',
         day: 28,
         month: 2,
+        answers: {
+            2015: 'DC',
+            2016: 'DC',
+            2017: 'DC',
+            2018: 'DC',
+            2019: 'DC',
+        },
     },
     {
         title: 'How many hours do you sleep?',
         day: 29,
         month: 2,
+        answers: {
+            2015: '10 hours',
+            2016: '9 hours',
+            2017: 'Nothing',
+            2018: '5 hours',
+            2019: '10 hours',
+        },
     },
     {
         title: 'Salty or sweet?',
