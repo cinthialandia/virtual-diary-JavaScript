@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import questions from './questions';
 
 const LOCAL_STORAGE_KEY = 'DB';
+const CURRENT_YEAR = new Date().getFullYear();
 // state es nuestro estado en memoria.
 const state = initState();
 
@@ -47,30 +48,32 @@ export function findQuestionByDate(date) {
 }
 //esta funcion guarda la respuesta en la base de datos
 //tiene 3 parametros que se obtendran en el otro modulo.
-export function saveAnswer(year, answer, date) {
+export function saveAnswer(answer, date) {
     //aqui buscanmos la pregunta por fecha para poder setear en donde guardar la respuesta y cual pregunta pertenece dicha respuesta
     const questionToAnswer = findQuestionByDate(date);
     //guardamos arriba en una variable la pregunta encontrada para poder saber la ruta donde vamos a guardar la respuesta en el objeto
     if (!questionToAnswer.answers) {
         questionToAnswer.answers = {};
     }
-    questionToAnswer.answers[year] = answer;
+    questionToAnswer.answers[CURRENT_YEAR] = answer;
     //Guardamos el nuevo estado en el local storage
     saveStateInDB(state);
     //lo retorno porque questionobjet necesita el valor de respuesta de esta funcion.
     return questionToAnswer;
 }
 // esta funcion encuentra el nombre de la persona del diario en la base de datos la cual utilizaremos para saber si setear o no
-export function findNamesOwner() {
+export function findOwnersName() {
     //retornamos porque un if necesita el owner para decidir que pantalla mostrar, es decir alguien espera una respuesta de nuestra funcion.
     return state.owner;
 }
 //esta funcion trae como parametro el nombre del dueno del diario que ha obtenido en el otro modulo
 // y esta funcion se encarga de guardar en la base de datos el nombre por primera vez
-export function savesName(name) {
+export function saveOwnersName(name) {
     state.owner = name;
     saveStateInDB(state);
+    saveStartDate(new Date());
 }
+
 //esta funcion, trae como parametro la fecha seteada del dia de hoy
 // y esta se encarga de guardar esta fecha dentro de la base de datos
 export function saveStartDate(starDate) {
