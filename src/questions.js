@@ -166,7 +166,7 @@ export default [
         month: 2,
     },
     {
-        title: 'Are you bored of something or someone?',
+        title: 'Are you bored with something or someone?',
         day: 3,
         month: 2,
     },
@@ -176,7 +176,7 @@ export default [
         month: 2,
     },
     {
-        title: 'What are three things you have to buy?',
+        title: 'What are the three things you have to buy?',
         day: 5,
         month: 2,
     },
@@ -246,7 +246,7 @@ export default [
         month: 2,
     },
     {
-        title: 'What was the last movie you saw in the cinema?',
+        title: 'What was the last movie you saw at the cinema?',
         day: 19,
         month: 2,
     },
@@ -281,7 +281,7 @@ export default [
         month: 2,
     },
     {
-        title: 'Do you believe in any conspiric theory?',
+        title: 'Do you believe in any conspiracy theory?',
         day: 26,
         month: 2,
     },
@@ -326,12 +326,12 @@ export default [
         month: 3,
     },
     {
-        title: 'If could add one hour to your day, what would yo do with it?',
+        title: 'If you could add one hour to your day, what would you do with it?',
         day: 6,
         month: 3,
     },
     {
-        title: 'Are you too old for TikTok?',
+        title: 'Write down a prediction for the future',
         day: 7,
         month: 3,
     },
@@ -341,7 +341,7 @@ export default [
         month: 3,
     },
     {
-        title: 'The end justifies the means?',
+        title: 'Does the end justify the means?',
         day: 9,
         month: 3,
     },
@@ -351,7 +351,7 @@ export default [
         month: 3,
     },
     {
-        title: 'What is your favorite comedian?',
+        title: 'Who is your favorite comedian?',
         day: 11,
         month: 3,
     },
@@ -366,7 +366,7 @@ export default [
         month: 3,
     },
     {
-        title: 'What inventios can you not live without?',
+        title: 'What inventions can you not live without?',
         day: 14,
         month: 3,
     },
@@ -401,7 +401,7 @@ export default [
         month: 3,
     },
     {
-        title: 'What’s A Movie You Can Practically Quote From Start To Finish?',
+        title: "What's A Movie You Can Practically Quote From Start To Finish?",
         day: 21,
         month: 3,
     },
@@ -416,7 +416,7 @@ export default [
         month: 3,
     },
     {
-        title: 'What’s The Most Interesting Thing You’ve Read Or Seen This Week?',
+        title: "What's The Most Interesting Thing You’ve Read Or Seen This Week?",
         day: 24,
         month: 3,
     },
@@ -436,7 +436,7 @@ export default [
         month: 3,
     },
     {
-        title: 'How Did You Find Out That Santa Isn’t Real?',
+        title: "How Did You Find Out That Santa Isn't Real?",
         day: 28,
         month: 3,
     },
@@ -446,7 +446,7 @@ export default [
         month: 3,
     },
     {
-        title: 'McDonald’s or Burger King?',
+        title: "McDonald's or Burger King?",
         day: 30,
         month: 3,
     },
@@ -481,7 +481,7 @@ export default [
         month: 4,
     },
     {
-        title: 'If could acquiere a talent (without any extra effort), what would it be?',
+        title: 'If could acquire a talent (without any extra effort), what would it be?',
         day: 6,
         month: 4,
     },
@@ -616,7 +616,7 @@ export default [
         month: 5,
     },
     {
-        title: 'If could have a superpower just for today what would it be?',
+        title: 'If it could have a superpower just for today what would it be?',
         day: 3,
         month: 5,
     },
@@ -651,7 +651,7 @@ export default [
         month: 5,
     },
     {
-        title: "What's the most creative thing you're done recently?",
+        title: "What's the most creative thing you've done recently?",
         day: 10,
         month: 5,
     },
@@ -676,17 +676,17 @@ export default [
         month: 5,
     },
     {
-        title: 'have you been unfaithful?',
+        title: 'Have you been unfaithful?',
         day: 15,
         month: 5,
     },
     {
-        title: 'What’s the most useless talent you have?',
+        title: "What's the most useless talent you have?",
         day: 16,
         month: 5,
     },
     {
-        title: ' What is the dumbest way you’ve been injured?',
+        title: "What is the dumbest way you've been injured?",
         day: 17,
         month: 5,
     },
@@ -711,12 +711,12 @@ export default [
         month: 5,
     },
     {
-        title: 'What was the best phase in your life?',
+        title: 'What was the best phase of your life?',
         day: 22,
         month: 5,
     },
     {
-        title: 'What is a relationship deal breaker for you?',
+        title: 'What is a relationship deal-breaker for you?',
         day: 23,
         month: 5,
     },
@@ -766,7 +766,7 @@ export default [
         month: 6,
     },
     {
-        title: 'On scale of one to ten, how healthy are you?',
+        title: 'On a scale of one to ten, how healthy are you?',
         day: 2,
         month: 6,
     },
@@ -811,12 +811,12 @@ export default [
         month: 6,
     },
     {
-        title: 'What is the craziest thing you’ve ever done and would you do it again?',
+        title: "What is the craziest thing you've ever done and would you do it again?",
         day: 11,
         month: 6,
     },
     {
-        title: 'What did you want to be when you were younger?',
+        title: 'Have you tried a new food? Did you like it?',
         day: 12,
         month: 6,
     },
@@ -846,7 +846,7 @@ export default [
         month: 6,
     },
     {
-        title: 'What are three things you value most about a person?',
+        title: 'What are the three things you value most about a person?',
         day: 18,
         month: 6,
     },
@@ -856,7 +856,7 @@ export default [
         month: 6,
     },
     {
-        title: 'What is the greatest struggle you’ve overcome?',
+        title: "What is the greatest struggle you've overcome?",
         day: 20,
         month: 6,
     },
@@ -866,17 +866,17 @@ export default [
         month: 6,
     },
     {
-        title: 'Who was your favorite teacher and why?',
+        title: 'Are you studying something new? What is it?',
         day: 22,
         month: 6,
     },
     {
-        title: 'Who is your favorite historical figure?',
+        title: "Tell me something you've changed your mind recently",
         day: 23,
         month: 6,
     },
     {
-        title: 'What’s closest you’ve ever come to being arrested?',
+        title: "What’s closest you've ever come to being arrested?",
         day: 24,
         month: 6,
     },
@@ -901,7 +901,7 @@ export default [
         month: 6,
     },
     {
-        title: 'Have you ever seen something you can’t explain?',
+        title: "Have you ever seen something you can't explain?",
         day: 29,
         month: 6,
     },
@@ -911,12 +911,12 @@ export default [
         month: 6,
     },
     {
-        title: 'What is the most clever or funniest use of advertising you’ve seen?',
+        title: "What is the most clever or funniest use of advertising you've seen?",
         day: 1,
         month: 7,
     },
     {
-        title: 'Whar was the last beach you went to?',
+        title: 'What was the last beach you went to?',
         day: 2,
         month: 7,
     },
@@ -991,7 +991,7 @@ export default [
         month: 7,
     },
     {
-        title: 'What’s something that a lot of people are missing out on because they don’t know about it?',
+        title: "What's something that a lot of people are missing out on because they don't know about it?",
         day: 17,
         month: 7,
     },
