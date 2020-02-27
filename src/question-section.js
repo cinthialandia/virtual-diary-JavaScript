@@ -1,13 +1,17 @@
 import { saveAnswer, findQuestionByDate, findOwnersName } from './db'; // importando métodos de la base de datos
 import { format } from 'date-fns';
+import { subDays } from 'date-fns';
+import { addDays } from 'date-fns';
 
 const template = `
 <section id="section-question">
     <header class="header">
         <h1 class="name-owner"></h1>
-        <label class="date" for="start">
+        <div class="date-picker-container">
+            <button class="btn-flat waves-effect date-picker-left"><i class="material-icons left">chevron_left</i></button>
             <input name="datepicker" type="date" />
-        </label>
+            <button class="btn-flat waves-effect date-picker-right"><i class="material-icons left">chevron_right</i></button>
+        </div>
     </header>
     <h2 class="question"></h2>
     <form class="question-form">
@@ -60,6 +64,10 @@ export function initQuestionForm() {
     const nowYearElm = getNowYearElm();
     //1.10 Seleccionamos el DOM del nombre
     const ownersNameElm = container.querySelector('.name-owner');
+    //1.11 Selecciamos el boton izquierdo
+    const prevDayButtonElm = document.querySelector('.date-picker-left');
+    // seleccionamos el boton derecho
+    const nextDayButtonElm = document.querySelector('.date-picker-right');
 
     // INITIIAL VALUES IN DOM
     //5.2.estamos seteando el calendario en la fecha de hoy
@@ -75,6 +83,10 @@ export function initQuestionForm() {
     datepickerElm.addEventListener('input', handleDatepickerInput);
     //
     questionFormElm.addEventListener('submit', handleQuestionFormSubmit);
+
+    prevDayButtonElm.addEventListener('click', handlePrevDayButtonClick);
+
+    nextDayButtonElm.addEventListener('click', handleNextDayButtonClick);
 }
 
 // LOGICA PARA RENDERIZAR EL TITULO Y LAS RESPUESTAS
@@ -142,4 +154,24 @@ function handleQuestionFormSubmit(event) {
     renderQuestionObj(questionObjectUpdated);
     // utilizamos este metodo para borrar valores del input despues que se hizo submit del mismo
     event.target.reset();
+}
+
+function handlePrevDayButtonClick() {
+    const datePickerElm = getDatePickerElm();
+    //restar un dia a la fecha
+    const newDate = subDays(datePickerElm.valueAsDate, 1);
+    //mostrar la nueva fecha
+    datePickerElm.value = format(newDate, 'yyyy-MM-dd');
+    //
+    datePickerElm.dispatchEvent(new Event('input'));
+}
+
+function handleNextDayButtonClick() {
+    const datePickerElm = getDatePickerElm();
+    //restar un dia a la fecha
+    const newDate = addDays(datePickerElm.valueAsDate, 1);
+    //mostrar la nueva fecha
+    datePickerElm.value = format(newDate, 'yyyy-MM-dd');
+    //
+    datePickerElm.dispatchEvent(new Event('input'));
 }

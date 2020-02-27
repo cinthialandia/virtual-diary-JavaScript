@@ -9,7 +9,6 @@ router
     .on(
         'welcome',
         function() {
-            console.log('esta es la pagina de welcome');
             initWelcomeForm();
         },
         {
@@ -26,7 +25,6 @@ router
     .on(
         '*',
         function() {
-            console.log('Esta es la pagina de home');
             initQuestionForm();
         },
         {

@@ -21,6 +21,19 @@ body {
     padding-right: 15px;
     font-size: 35px;
 }
+.date-picker-container {
+    display: flex;
+    align-items: center;
+}
+
+.date-picker-container input {
+    text-align: center;
+}
+
+.date-picker-container .btn-flat {
+    color: #fca82e;
+    font-weight: bold;
+}
 
 .question {
     text-align: center;
