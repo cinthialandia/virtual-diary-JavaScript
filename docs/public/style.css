@@ -1,0 +1,279 @@
+/*todo el cuerpo tendra la misma letra*/
+body {
+    background-color: #8f95e3;
+    padding: 30px;
+    color: #101028;
+    font-family: 'Quicksand';
+}
+.answers-title {
+    font-size: medium;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: -15px;
+    color: #a8a8a8;
+}
+
+.owner-form {
+    padding-top: 15px;
+}
+.year {
+    color: #e678a7;
+    padding-right: 15px;
+    font-size: 35px;
+}
+
+.question {
+    text-align: center;
+}
+/*answers style*/
+
+/*answers style*/
+
+/*Con esto se crea la carta blanca que se encuentra encima del fondo morado*/
+.card {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.name-owner {
+    font-size: 25px;
+    margin: 0px;
+    font-weight: bold;
+}
+/*Section welcome*/
+#welcome-section {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
+
+.container-welcome {
+    flex: 1;
+    padding-left: 70px;
+}
+
+.img-container {
+    flex: 1;
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+}
+/*Section welcome*/
+
+/*Section question*/
+
+#section-question {
+    padding: 50px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.question-form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.year {
+    flex-basis: 12%;
+}
+
+.input-button {
+    flex-basis: 45%;
+}
+/*input color differente*/
+
+textarea.materialize-textarea:focus:not([readonly]),
+input[type='date']:not(.browser-default):focus:not([readonly]),
+input[type='text']:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #fca82e;
+    box-shadow: 0 1px 0 0 #fca82e;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type='text']:not(.browser-default):focus:not([readonly]) + label {
+    color: #fca82e;
+}
+
+/*Section question*/
+
+/*Estilo de todos los botones*/
+.btn.btn-primary {
+    background-color: #fca82e;
+    border-color: #e1b064;
+    min-height: 30px;
+    min-width: 130px;
+    font-family: 'Quicksand';
+}
+
+/*Cuando se activen y haga un ligero cambio pero siempre tenga el mismo estilo*/
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #e1b064;
+    border-color: #e1b064;
+}
+
+.input-field input[type='text']:active,
+.input-field input[type='text']:focus {
+    border-bottom: 1px solid #e1b064;
+    box-shadow: 0 1px 0 0 #fca82e;
+}
+.name-owner {
+    color: #e678a7;
+}
+
+/* NO BORRARRR NO TE VOLVAIS LOCA QUE ES LO QUE TAPA O NO LAS PANTALLAS */
+#section-question.section-hiden,
+#welcome-section.section-hiden {
+    display: none;
+}
+
+/* NO BORRARRR NO TE VOLVAIS LOCA QUE ES LO QUE TAPA O NO LAS PANTALLAS */
+
+/* day picker*/
+
+[type='date']:focus {
+    border-bottom: 1px solid #fca82e;
+    box-shadow: 0 1px 0 0 #fca82e;
+}
+
+[type='date']::-webkit-clear-button {
+    display: none;
+}
+
+[type='date']::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type='date']::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    color: #fca82e;
+    border: 2px solid;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+[type='date']::-webkit-calendar-picker-indicator:hover {
+    background-color: #fca82e;
+    color: white;
+    border: 2px solid #fca82e;
+}
+/* day picker*/
+
+/*timeline*/
+
+.answers-container {
+    border-left: 2px solid #a8a8a8;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    color: #101216;
+    margin: 0 auto;
+    position: relative;
+    padding: 70px 0 0px 0;
+    list-style: none;
+    max-width: 50%;
+}
+.answers-container:before {
+    left: -8px;
+    top: -75px;
+    background: #a8a8a8;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+}
+
+.event {
+    padding-left: 30px;
+    margin-bottom: 40px;
+    position: relative;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    word-wrap: break-word;
+}
+.event:last-of-type {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
+}
+.event:before,
+.event:after {
+    position: absolute;
+    display: block;
+    top: 0;
+}
+.event:before {
+    content: attr(data-date);
+    font-weight: bold;
+    color: #e678a7;
+    text-align: center;
+    background-color: white;
+    left: -20px;
+}
+
+/*timeline*/
+
+/* This query was necessary for changing the size of the elements on mobile cellphone*/
+@media only screen and (max-width: 800px) {
+    /*welcome section media query*/
+    body {
+        padding: 15px;
+    }
+    #welcome-section {
+        display: flex;
+        flex-direction: column;
+    }
+    .input-field {
+        margin-top: 30px;
+    }
+
+    .img-container img {
+        width: 100%;
+        height: auto;
+    }
+    .container-welcome {
+        padding-left: 0px;
+    }
+
+    /*question part*/
+    .name-owner {
+        padding-bottom: 15px;
+    }
+
+    #section-question {
+        padding: 15px;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .year {
+        flex-basis: auto;
+        flex: 0;
+        padding-right: 20px;
+        margin-left: -15px;
+    }
+
+    .input-button {
+        flex-basis: auto;
+        flex: 1;
+    }
+    .year h3 {
+        font-size: 22px;
+    }
+
+    .answers-container {
+        max-width: 100%;
+    }
+}
